@@ -3,6 +3,7 @@ Miinaharava. Klooni microsoftin omasta käyttöjärjestelmien mukana tulevasta p
 
 **Käyttäjä:**
 Pelaaja.
+
 **Toiminnot:**
 - Uuden pelin aloitus
   - Valitaan vaikeusaste (ennaltamäärätyt ruudukon koko, miinojen määrä)
