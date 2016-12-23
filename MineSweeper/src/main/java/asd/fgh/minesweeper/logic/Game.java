@@ -35,12 +35,23 @@ public class Game {
         
         // Initialize grid
         grid = new Grid[width][height];
+        int adjacentMines;
         for (int i = 0; i < size; i++){
-            grid[i%width][i/width] = new Grid(mineMap[i], 0);
+            adjacentMines = adjacentMines(i, mineMap, width);
+            grid[i%width][i/width] = new Grid(mineMap[i]);
         }
     }
     
     private int clamp(int value, int min, int max){
          return (value > max) ? max : (value < min ? min : value);
+    }
+
+    private int adjacentMines(int i, boolean[] m, int w) {
+        int a = 0;
+        int l = m.length;
+        if (i%w>0 && i/w>0 && m[i-w-1]) a++;
+        if (i/w>0 && m[i-w]) a++;
+        if (i%w<w-1 && i/w>0 && m[i-w]) a++;
+        return a;
     }
 }
