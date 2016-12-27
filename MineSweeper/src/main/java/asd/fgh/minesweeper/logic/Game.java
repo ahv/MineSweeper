@@ -2,31 +2,39 @@ package asd.fgh.minesweeper.logic;
 
 import asd.fgh.minesweeper.logic.data.Board;
 
-/*
-Beginner: 10 mines, 9x9 grid
-Intermediate: 40, 16x16
-Advanced: 99, 16x30
-Allow Custom?
-*/
-
 public class Game {
     private boolean alive;
     private final Board board;
-
-    public Game(int mines, int width, int height) {
-        // Validify parameters
-        width = clamp(width, 4, 30);
-        height = clamp(height, 4, 16); // TODO: Hard coded values here.
-        mines = clamp(mines, 1, width*height);
+    private final Difficulty difficulty;
+    
         
+    // TODO: Using CUSTOM difficulty causes an Exception! Use null to signify CUSTOM difficulty instead?
+    // TODO: Game difficulty presets are in a somewhat obscure place hidden in this class. Refactor? (hard coded values in tests because of this!)
+    public static Game generatePresetGame(Difficulty difficulty) throws Exception{
+        switch(difficulty){
+            case BEGINNER:
+                return new Game(10, 9, 9, difficulty);
+            case INTERMEDIATE:
+                return new Game(40, 16, 16, difficulty);
+            case ADVANCED:
+                return new Game(99, 30, 16, difficulty);
+            default:
+                throw new Exception("Invalid difficulty!");
+        }
+    }
+    
+    private Game(int mines, int width, int height, Difficulty difficulty){
         this.board = new Board(mines, width, height);
         this.alive = true;
+        this.difficulty = Difficulty.CUSTOM; 
     }
-    
-    // TODO: Is this the proper place to handle validation?
-    private int clamp(int value, int min, int max){
-         return (value > max) ? max : (value < min ? min : value);
+
+    public Game(int mines, int width, int height) {        
+        this(mines, width, height, Difficulty.CUSTOM);
     }
-    
-    
+
+    // WARNING: Temporarily exposed Board for tests.
+    public Board getBoard() {
+        return board;
+    }
 }
