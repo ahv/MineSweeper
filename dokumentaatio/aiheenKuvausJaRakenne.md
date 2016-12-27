@@ -10,3 +10,6 @@ Pelaaja.
 - Ruudun avaus
 - Ruudun merkkaus
 - Huippupisteiden katselu
+
+**Luokkakaavio**
+![Luokkakaavio](https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/MineSweeperClass.png)
