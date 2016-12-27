@@ -23,21 +23,27 @@ public class MineMap {
             mines--;
         }
     }
-    
+
     boolean isMined(int x, int y) {
-        if (x < 0 || y < 0) return false;
+        if (x < 0 || y < 0) {
+            return false;
+        }
         int loc = y * width + x;
         return (loc >= 0 && loc < mineMap.length && mineMap[loc]);
     }
 
     int minedNeighbours(int x, int y) {
         int adjs = 0;
-        for (int cx = -1; cx < 2; cx++){
-            for (int cy = -1; cy < 2; cy++){
-                if (isMined(x+cx, y+cy)) adjs++;
+        for (int cx = -1; cx < 2; cx++) {
+            for (int cy = -1; cy < 2; cy++) {
+                if (isMined(x + cx, y + cy)) {
+                    adjs++;
+                }
             }
         }
-        if (isMined(x, y) && adjs > 0) adjs--; // Correct self count.
+        if (isMined(x, y) && adjs > 0) {
+            adjs--; // Correct self count.
+        }
         return adjs;
     }
 }

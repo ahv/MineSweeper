@@ -29,8 +29,8 @@ class Grid {
     public void flipFlagged() {
         this.flagged = !flagged;
     }
-    
-    boolean isRevealed(){
+
+    boolean isRevealed() {
         return revealed;
     }
 
