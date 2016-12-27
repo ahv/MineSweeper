@@ -2,12 +2,12 @@ package asd.fgh.minesweeper.logic.data;
 
 import java.util.Random;
 
+// Used internally by Board class when generating a new game.
 public class MineMap {
 
     private final boolean[] mineMap;
     private final int width;
 
-    // Used internally by Board class when generating a new game.
     MineMap(int mines, int width, int height) {
         this.mineMap = new boolean[width * height];
         this.width = width;
@@ -23,9 +23,11 @@ public class MineMap {
             mines--;
         }
     }
-
+    
     boolean isMined(int x, int y) {
-        return (y * width + x < mineMap.length && mineMap[y * width + x]);
+        if (x < 0 || y < 0) return false;
+        int loc = y * width + x;
+        return (loc >= 0 && loc < mineMap.length && mineMap[loc]);
     }
 
     int minedNeighbours(int x, int y) {
@@ -35,7 +37,7 @@ public class MineMap {
                 if (isMined(x+cx, y+cy)) adjs++;
             }
         }
-        if (isMined(x, y)) adjs--;
+        if (isMined(x, y) && adjs > 0) adjs--; // Correct self count.
         return adjs;
     }
 }
