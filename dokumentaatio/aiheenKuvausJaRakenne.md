@@ -11,5 +11,7 @@ Pelaaja.
 - Ruudun merkkaus
 - Huippupisteiden katselu
 
-**Luokkakaavio**
+**Luokkakaavio:**
+
+
 ![Luokkakaavio](https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/MineSweeperClass.png)
