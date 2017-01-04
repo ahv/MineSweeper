@@ -21,7 +21,10 @@ public class GameButton extends Button implements MouseListener {
     }
     
     void setVisualState(int i) {
-        setLabel(i + "");
+        if (i == -2) setLabel("!"); // flagged
+        else if (i == -1) setLabel(" "); // unrevealed
+        else if (i == 9) setLabel("*"); // mined
+        else setLabel(i + ""); // touched mines amount
     }
 
     @Override
