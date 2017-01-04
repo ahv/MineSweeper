@@ -48,7 +48,6 @@ public class Board {
                 revealed++;
             }
         }
-        System.out.println("R: " + revealed + mines + ", " + width*height);
         return revealed + mines == width * height;
     }
 
@@ -91,12 +90,16 @@ public class Board {
             gridAt(x + 1, y), gridAt(x - 1, y + 1), gridAt(x, y + 1), gridAt(x + 1, y + 1)};
         return neighbours;
     }
-    
+
     public void openAdjacentsAt(int x, int y) {
-        if (!coordinatesAreInBoundary(x, y)) return;
-        for (Grid g : neighbourGrids(x, y)){
-            if (g != null && !g.isFlagged()) openGridAt(g.getX(), g.getY());
-        }  
+        if (!coordinatesAreInBoundary(x, y)) {
+            return;
+        }
+        for (Grid g : neighbourGrids(x, y)) {
+            if (g != null && !g.isFlagged()) {
+                openGridAt(g.getX(), g.getY());
+            }
+        }
     }
 
     private Grid gridAt(int x, int y) {
@@ -144,8 +147,10 @@ public class Board {
     public int touchedFlagsAt(int x, int y) {
         int flags = 0;
         if (coordinatesAreInBoundary(x, y)) {
-            for (Grid g : neighbourGrids(x, y)){
-                if (g != null && g.isFlagged()) flags++;
+            for (Grid g : neighbourGrids(x, y)) {
+                if (g != null && g.isFlagged()) {
+                    flags++;
+                }
             }
         }
         return flags;

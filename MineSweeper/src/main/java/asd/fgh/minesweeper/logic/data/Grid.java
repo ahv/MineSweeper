@@ -44,7 +44,7 @@ class Grid {
     public void flipFlag() {
         if (!isRevealed()) {
             // TODO: This assumes that GridState enum doesn't get expanded.
-        state = state == GridState.UNREVEALED ? GridState.FLAGGED : GridState.UNREVEALED;
+            state = state == GridState.UNREVEALED ? GridState.FLAGGED : GridState.UNREVEALED;
         }
     }
 

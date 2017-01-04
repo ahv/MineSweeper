@@ -55,9 +55,14 @@ public class Game {
     // when adjacent flags count match the adjacent mine count in the grid
     // assume unflagged adjacents safe and open them.
     public void openAdjacentsAt(int x, int y) {
-        if (hasGameEnded()) return;
+        if (hasGameEnded()) {
+            return;
+        }
         if (board.isRevealed(x, y) && board.touchedFlagsAt(x, y) == board.touchedMinesAt(x, y)) {
             board.openAdjacentsAt(x, y);
+        }
+        if (board.isCompletelyExplored()) {
+            finishGame(GameState.WON);
         }
     }
 
