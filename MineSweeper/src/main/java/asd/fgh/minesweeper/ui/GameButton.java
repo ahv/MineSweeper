@@ -25,19 +25,16 @@ public class GameButton extends Button implements MouseListener {
         else if (i == -1) setLabel(" "); // unrevealed
         else if (i == 9) setLabel("*"); // mined
         else setLabel(i + ""); // touched mines amount
+
     }
 
+    // TODO: Right click doesn't seem to always register... maybe it's just my mouse dying.
     @Override
     public void mouseClicked(MouseEvent me) {
-        /*
-        - check which button
-        - what's the state of the grid
-        
-        */
-        game.open(x, y);
+        // BUTTON2 appears to be scrollwheel.
+        if (me.getButton() == MouseEvent.BUTTON3) game.flag(x, y);
+        else if (me.getButton() == MouseEvent.BUTTON1) game.open(x, y);
         frame.updateView();
-        System.out.println("Clicked: " + x + ", " + y);
-        System.out.println("Game State: " + game.getState());
     }
 
     @Override

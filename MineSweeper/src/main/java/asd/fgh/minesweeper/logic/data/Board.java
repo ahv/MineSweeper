@@ -25,7 +25,7 @@ public class Board {
         for (int i = 0; i < width * height; i++) {
             int x = i % width;
             int y = i / width;
-            grid[x][y] = new Grid(m.isMined(x, y), m.minedNeighbours(x, y));
+            grid[x][y] = new Grid(x, y, m.isMined(x, y), m.minedNeighbours(x, y));
         }
     }
 
@@ -73,9 +73,28 @@ public class Board {
             grid[x][y].reveal();
             return;
         }
-        
-        // TODO: Recursive opening!!
-        System.out.println("Asdf");
+        ArrayList<Grid> added = new ArrayList<>();
+        added.add(grid[x][y]);
+        banana(x, y, added);
+        for (Grid g : added){
+            g.reveal();
+        }
+    }
+    
+    private ArrayList<Grid> banana(int x, int y, ArrayList<Grid> added) {
+        Grid[] neighbours = new Grid[]{ gridAt(x-1, y-1), gridAt(x, y-1), gridAt(x+1, y-1), gridAt(x-1, y), 
+            gridAt(x+1, y), gridAt(x-1, y+1), gridAt(x, y+1), gridAt(x+1, y+1)};
+        for (Grid g : neighbours){
+            if (g == null || added.contains(g) || g.isRevealed() || g.isFlagged()) continue;
+            added.add(g);
+            if (g.touchedMines() == 0) banana(g.getX(), g.getY(), added);
+        }
+        return added;
+    }
+
+    private Grid gridAt(int x, int y) {
+        if (isLegalGrid(x, y)) return grid[x][y];
+        return null;
     }
 
     // TODO: These pass-through methods seem wrong, but maybe they just smell funny.
@@ -92,14 +111,14 @@ public class Board {
         if (isLegalGrid(x, y)) return grid[x][y].isRevealed();
         return false;
     }
+    
+    public boolean isFlagged(int x, int y) {
+        if (isLegalGrid(x, y)) return grid[x][y].isFlagged();
+        return false;
+    }
 
     public int touchedMines(int x, int y) {
         if (isLegalGrid(x, y)) return grid[x][y].touchedMines();
         return 0;
-    }
-
-    public boolean isFlagged(int x, int y) {
-        if (isLegalGrid(x, y)) return grid[x][y].isFlagged();
-        return false;
     }
 }
