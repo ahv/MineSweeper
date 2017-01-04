@@ -15,9 +15,29 @@ public class GameTest {
         assertNotNull(g);
     }
     
+    // TODO: Assumes that clamp range doesn't change..
     @Test
     public void canCreateCustomGame(){
-        Game g = new Game(20, 20, 20);
-        assertNotNull(g);
+        Game g = new Game(16, 4, 4);
+        GameSettings s = g.getSettings();
+        assertEquals(4, s.getWidth());
+        assertEquals(4, s.getHeight());
+        assertEquals(16, s.getMines());
+    }
+    
+    @Test
+    public void gameEndsWhenMineHit(){
+        Game g = new Game(16, 4, 4);
+        assertEquals(false, g.hasGameEnded());
+        g.openGridAt(0, 0);
+        assertEquals(true, g.hasGameEnded());
+    }
+    
+    @Test
+    public void cantOpenFlagged(){
+        Game g = new Game(16, 4, 4);
+        g.flagGridAt(0, 0);
+        g.openGridAt(0, 0);
+        assertEquals(false, g.hasGameEnded());
     }
 }

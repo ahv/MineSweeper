@@ -33,49 +33,53 @@ public class Game {
         return (this.state == GameState.LOST || this.state == GameState.WON);
     }
 
-    // TODO: A little bulky
-    public void openGridAt(int x, int y) {
-        if (hasGameEnded()) {
-            return;
+    // True: managed to open grid and/or game ended
+    public boolean openGridAt(int x, int y) {
+        if (!preCheck() && board.isFlagged(x, y)) {
+            return false;
         }
-        // Start clock on first open.
+        return (board.openGridAt(x, y) || afterCheck(x, y));
+    }
+
+    private boolean preCheck() {
+        // Starts clock on first action.
         if (state == GameState.READY) {
             this.clock.start();
             this.state = GameState.RUNNING;
         }
-        board.openGridAt(x, y);
+        return !hasGameEnded();
+    }
+
+    // True: game is over
+    private boolean afterCheck(int x, int y) {
         if (board.isMined(x, y)) {
-            finishGame(GameState.LOST);
+            state = GameState.LOST;
         } else if (board.isCompletelyExplored()) {
-            finishGame(GameState.WON);
+            state = GameState.WON;
+        } else {
+            return false;
         }
+        this.clock.stop();
+        return true;
     }
 
     // This is the both mouse buttons click functionality:
     // when adjacent flags count match the adjacent mine count in the grid
     // assume unflagged adjacents safe and open them.
     public void openAdjacentsAt(int x, int y) {
-        if (hasGameEnded()) {
+        if (!preCheck()) {
             return;
         }
         if (board.isRevealed(x, y) && board.touchedFlagsAt(x, y) == board.touchedMinesAt(x, y)) {
             board.openAdjacentsAt(x, y);
         }
-        if (board.isCompletelyExplored()) {
-            finishGame(GameState.WON);
-        }
+
     }
 
     public void flagGridAt(int x, int y) {
-        if (!hasGameEnded()) {
+        if (preCheck()) {
             board.flipFlag(x, y);
         }
-    }
-
-    // TODO: Scoreboard object?
-    private void finishGame(GameState result) {
-        this.state = result;
-        this.clock.stop();
     }
 
     // Convenience for UI

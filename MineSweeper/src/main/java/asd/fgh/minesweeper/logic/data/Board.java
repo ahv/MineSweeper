@@ -51,13 +51,14 @@ public class Board {
         return revealed + mines == width * height;
     }
 
-    public void openGridAt(int x, int y) {
+    public boolean openGridAt(int x, int y) {
         if (!coordinatesAreInBoundary(x, y)) {
-            return;
+            return false;
         }
         if (grid[x][y].isMined() || grid[x][y].touchedMines() != 0) {
             grid[x][y].reveal();
-            return; // Skip recursion when hitting a mine or grid is touching a mine.
+            return true;
+             // Skip recursion when hitting a mine or grid is touching a mine.
         }
 
         // Recursive opening
@@ -67,6 +68,7 @@ public class Board {
         for (Grid g : openable) {
             g.reveal();
         }
+        return true;
     }
 
     // This helper method is only used above, it populates an array of grids to open.
