@@ -57,7 +57,7 @@ public class GameFrame extends Frame {
 
     // TODO: Sketchy
     public void updateView() throws Exception {
-        if (game.hasGameEnded()) {
+        if (game.hasEnded()) {
             main.startGame(Difficulty.BEGINNER);
         }
         int[][] snap = game.getBoardSnapshot();

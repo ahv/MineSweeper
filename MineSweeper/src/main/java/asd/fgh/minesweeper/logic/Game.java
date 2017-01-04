@@ -29,16 +29,17 @@ public class Game {
         return settings;
     }
 
-    public boolean hasGameEnded() {
+    public boolean hasEnded() {
         return (this.state == GameState.LOST || this.state == GameState.WON);
     }
 
-    // True: managed to open grid and/or game ended
+    // True: managed to open grid
     public boolean openGridAt(int x, int y) {
-        if (!preCheck() && board.isFlagged(x, y)) {
+        if (!preCheck() || board.isFlagged(x, y)) {
             return false;
         }
-        return (board.openGridAt(x, y) || afterCheck(x, y));
+        afterCheck(x, y);
+        return board.openGridAt(x, y);
     }
 
     private boolean preCheck() {
@@ -47,7 +48,7 @@ public class Game {
             this.clock.start();
             this.state = GameState.RUNNING;
         }
-        return !hasGameEnded();
+        return !hasEnded();
     }
 
     // True: game is over
@@ -66,14 +67,16 @@ public class Game {
     // This is the both mouse buttons click functionality:
     // when adjacent flags count match the adjacent mine count in the grid
     // assume unflagged adjacents safe and open them.
-    public void openAdjacentsAt(int x, int y) {
+    // True: Was able to open adjacents
+    public boolean openAdjacentsAt(int x, int y) {
         if (!preCheck()) {
-            return;
+            return false;
         }
         if (board.isRevealed(x, y) && board.touchedFlagsAt(x, y) == board.touchedMinesAt(x, y)) {
             board.openAdjacentsAt(x, y);
+            return true;
         }
-
+        return false;
     }
 
     public void flagGridAt(int x, int y) {
