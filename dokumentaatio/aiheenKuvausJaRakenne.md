@@ -16,7 +16,6 @@ Pelaaja.
   - Voidaan myös määrittää ruudukon koko ja miinojen määrä itse (arvot validoidaan)
 - Ruudun avaus
 - Ruudun merkkaus
-- 
 - Huippupisteiden katselu
 
 **Luokkakaavio:**
