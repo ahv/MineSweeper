@@ -23,10 +23,10 @@ under the License.
     <link>${project.url}</link>
     <description>MineSweeper - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2016</copyright>
+    <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 6,
-             Errors: 0,
+      <title>File: 15,
+             Errors: 1,
              Warnings: 0,
              Infos: 0
       </title>
@@ -46,7 +46,105 @@ under the License.
           <tbody>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.ui.GameButton.java">asd/fgh/minesweeper/ui/GameButton.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.logic.persistence.Score.java">asd/fgh/minesweeper/logic/persistence/Score.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.ui.GameFrame.java">asd/fgh/minesweeper/ui/GameFrame.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.ui.Main.java">asd/fgh/minesweeper/ui/Main.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.logic.data.GridState.java">asd/fgh/minesweeper/logic/data/GridState.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.logic.persistence.HighScores.java">asd/fgh/minesweeper/logic/persistence/HighScores.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.logic.data.Board.java">asd/fgh/minesweeper/logic/data/Board.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.logic.GameSettings.java">asd/fgh/minesweeper/logic/GameSettings.java</a>
                 </td>
                 <td>
                   0
@@ -61,6 +159,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.logic.data.MineMap.java">asd/fgh/minesweeper/logic/data/MineMap.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.ui.GameEndDialog.java">asd/fgh/minesweeper/ui/GameEndDialog.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +228,21 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.Main.java">asd/fgh/minesweeper/Main.java</a>
+                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.logic.GameState.java">asd/fgh/minesweeper/logic/GameState.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.logic.StopWatch.java">asd/fgh/minesweeper/logic/StopWatch.java</a>
                 </td>
                 <td>
                   0
