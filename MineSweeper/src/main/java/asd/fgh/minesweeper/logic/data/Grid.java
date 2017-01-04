@@ -1,6 +1,12 @@
 package asd.fgh.minesweeper.logic.data;
 
 // Simple enough data class that it doesn't need tests?
+/**
+ * Simple data class to know everything a Grid needs to know about itself.
+ * Used internally in Board class.
+ * 
+ * @author ahv
+ */
 class Grid {
 
     private GridState state;

@@ -1,5 +1,18 @@
 package asd.fgh.minesweeper.logic;
 
+/**
+ * Generates preset game settings, and validates custom game settings.
+ * With package-private constructor and a factory method can only be
+ * instantiated in asd.fgh.minesweeper.logic package, but its class declaration
+ * being public, and it having public getters can also be used when setting up an UI.
+ * 
+ * A Game object carries its settings around and has a method to access them.
+ * 
+ * @see asd.fgh.minesweeper.logic.Game#getSettings() 
+ * 
+ * @author ahv
+ */
+
 public class GameSettings {
 
     public final static int MINIMUM_WIDTH = 4;
@@ -12,7 +25,8 @@ public class GameSettings {
     private final int height;
     private final Difficulty difficulty; // TODO: difficulty is null with custom games
 
-    static GameSettings generatePreset(Difficulty difficulty) throws Exception {
+    // TODO: Study material 
+    static GameSettings generatePreset(Difficulty difficulty) {
         switch (difficulty) {
             case BEGINNER:
                 return new GameSettings(10, 9, 9, difficulty);
@@ -21,7 +35,8 @@ public class GameSettings {
             case ADVANCED:
                 return new GameSettings(99, 30, 16, difficulty);
             default:
-                throw new Exception("Undefined preset difficulty!");
+                // TODO: Silently returns a beginner instance when no preset is defined, is this ok?
+                return generatePreset(Difficulty.BEGINNER);
         }
     }
 

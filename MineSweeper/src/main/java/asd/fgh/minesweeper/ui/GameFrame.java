@@ -11,6 +11,10 @@ import java.awt.Label;
 import java.awt.Panel;
 import javax.swing.BoxLayout;
 
+/**
+ * Frame to visually represent an instance of a Game.
+ * @author ahv
+ */
 public class GameFrame extends Frame {
 
     private final Game game;
@@ -19,7 +23,7 @@ public class GameFrame extends Frame {
     private final Label mineLabel;
     private final Main main;
 
-    public GameFrame(Main main, Difficulty difficulty) throws HeadlessException, Exception {
+    public GameFrame(Main main, Difficulty difficulty) throws HeadlessException {
         this.main = main;
         this.game = new Game(difficulty);
         GameSettings s = game.getSettings();
@@ -55,8 +59,12 @@ public class GameFrame extends Frame {
         setVisible(true);
     }
 
-    // TODO: Sketchy
-    public void updateView() throws Exception {
+    // TODO: Sketchy method
+    /**
+     * Gets a snapshot from the game object and updates the look accordingly.
+     * @throws Exception 
+     */
+    public void updateView() {
         if (game.hasEnded()) {
             main.startGame(Difficulty.BEGINNER);
         }

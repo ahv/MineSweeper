@@ -1,9 +1,13 @@
 package asd.fgh.minesweeper.logic;
 
-// TODO: Clock running in its own thread
-public class Clock {
+/**
+ * StopWatch to score a Game
+ * 
+ * @author ahv
+ */
+public class StopWatch {
 
-    public Clock() {
+    public StopWatch() {
     }
 
     void start() {

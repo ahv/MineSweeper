@@ -1,10 +1,19 @@
 package asd.fgh.minesweeper.logic.data;
 
-// The only public class in asd.fgh.minesweeper.logic.data -- used as an instance in Game class.
-// Game class has the actual game logic, this class aspires to be data only.
-// Handles the recursive opening of grids though.
+
 import java.util.ArrayList;
 
+/**
+ * Holds a reference to each Grid on the board and has methods to manipulate and inspect them.
+ * This class is the only public class in asd.fgh.minesweeper.logic.data and is used internally
+ * in an instance of a Game. This class is aspiring to be the data, while the Game class
+ * handles the logic (although currently the dichotomy is pretty hazy).
+ * 
+ * To separate Board creation logic and the generated data itself this class uses a MineMap
+ * instance internally during its construction to abstract away the creation logic.
+ * 
+ * @author ahv
+ */
 public class Board {
 
     private final Grid[][] grid;
@@ -12,6 +21,15 @@ public class Board {
     private final int height;
     private final int mines;
 
+    /**
+     * Creates a Board. The passed values aren't validated at this stage,
+     * but should be coming from a GameSettings object.
+     * @param mines     Amount of mines to randomize on the board.
+     * @param width     Width of the board.
+     * @param height    Height of the board.
+     * 
+     * @see asd.fgh.minesweeper.logic.GameSettings
+     */
     public Board(int mines, int width, int height) {
         MineMap m = new MineMap(mines, width, height);
         this.grid = new Grid[width][height];
@@ -33,11 +51,22 @@ public class Board {
         return height;
     }
 
+    /**
+     * Check if given coordinates are within the boundaries of the Board.
+     * @param x X-coordinate.
+     * @param y Y-coordinate.
+     * @return True if given coordinates are within the boundaries.
+     */
     public boolean coordinatesAreInBoundary(int x, int y) {
         return (x >= 0 && x < width && y >= 0 && y < height);
     }
 
     // All non-mined grids are revealed -- the win condition.
+    /**
+     * Checks if every non-mined grid has been revealed --
+     * which happens to be the win condition of the game.
+     * @return True if essentially win condition has been met.
+     */
     public boolean isCompletelyExplored() {
         int revealed = 0;
         for (int i = 0; i < width * height; i++) {
@@ -51,6 +80,14 @@ public class Board {
         return revealed + mines == width * height;
     }
 
+    /**
+     * Opens a grid at coordinates. If the opened grid touches no mines,
+     * will also recursively open adjacent grids until the edges of the
+     * unmined "island" have been found.
+     * @param x X-coordinate.
+     * @param y Y-coordinate.
+     * @return Returns true if one or more grid was opened.
+     */
     public boolean openGridAt(int x, int y) {
         if (!coordinatesAreInBoundary(x, y)) {
             return false;
@@ -60,7 +97,6 @@ public class Board {
             return true;
              // Skip recursion when hitting a mine or grid is touching a mine.
         }
-
         // Recursive opening
         ArrayList<Grid> openable = new ArrayList<>();
         openable.add(grid[x][y]);
@@ -70,6 +106,9 @@ public class Board {
         }
         return true;
     }
+    
+    // TODO: What these methods in this class provide could actually be better implemented in Grid class.
+    // -- especially if a grid knows about its neighbours!
 
     // This helper method is only used above, it populates an array of grids to open.
     private ArrayList<Grid> populateOpenableRecursively(int x, int y, ArrayList<Grid> added) {
@@ -93,6 +132,11 @@ public class Board {
         return neighbours;
     }
 
+    /**
+     * Opens all of the adjacent, unflagged grids from the coordinates position.
+     * @param x X-coordinate.
+     * @param y Y-coordinate.
+     */
     public void openAdjacentsAt(int x, int y) {
         if (!coordinatesAreInBoundary(x, y)) {
             return;

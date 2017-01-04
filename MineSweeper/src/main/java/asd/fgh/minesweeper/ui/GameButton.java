@@ -8,6 +8,11 @@ import java.awt.event.MouseListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Extended Button component for GameFrame.
+ * 
+ * @author ahv
+ */
 public class GameButton extends Button implements MouseListener {
 
     private final Game game;

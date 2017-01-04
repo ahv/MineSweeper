@@ -2,8 +2,12 @@ package asd.fgh.minesweeper.logic.data;
 
 import java.util.Random;
 
-// Used internally by Board class when generating a new game.
-// Abstracts away creation logic and allows Board to be a simpler data class.
+/**
+ * Used internally by Board class when generating a new board.
+ * Abstracts away creation logic and allows Board to be a simpler data class.
+ * 
+ * @author ahv
+ */
 public class MineMap {
 
     private final boolean[][] mineMap;
@@ -11,6 +15,8 @@ public class MineMap {
     private final int height;
 
     MineMap(int mines, int width, int height) {
+        // TODO: Failsafe, but is handling validation again -- which should've happened in GameSettings already.
+        mines = mines <= width*height ? mines : width*height;
         this.mineMap = new boolean[width][height];
         this.width = width;
         this.height = height;
