@@ -3,7 +3,6 @@ package asd.fgh.minesweeper.ui;
 import asd.fgh.minesweeper.logic.Difficulty;
 import asd.fgh.minesweeper.logic.Game;
 import asd.fgh.minesweeper.logic.GameSettings;
-import asd.fgh.minesweeper.logic.GameState;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
@@ -13,19 +12,19 @@ import java.awt.Panel;
 import javax.swing.BoxLayout;
 
 public class GameFrame extends Frame {
-    
+
     private final Game game;
     private final GameButton[][] grid;
     private final Label timeLabel;
     private final Label mineLabel;
     private final Main main;
-    
+
     public GameFrame(Main main, Difficulty difficulty) throws HeadlessException, Exception {
         this.main = main;
         this.game = new Game(difficulty);
         GameSettings s = game.getSettings();
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        
+
         Panel topPanel = new Panel(new FlowLayout());
         this.timeLabel = new Label("Time: 0");
         this.mineLabel = new Label("Mines: " + s.getMines());
@@ -33,13 +32,13 @@ public class GameFrame extends Frame {
         topPanel.add(mineLabel);
         topPanel.setSize(20, 200);
         add(topPanel);
-        
+
         int w = s.getWidth();
         int h = s.getHeight();
         Panel minePanel = new Panel(new GridLayout(w, h));
         this.grid = new GameButton[w][h];
         int x, y;
-        for (int i = 0; i < w*h; i++){
+        for (int i = 0; i < w * h; i++) {
             x = i % w;
             y = i / w;
             // TODO: Seems pretty badly coupled but maybe we'll live.
@@ -48,16 +47,16 @@ public class GameFrame extends Frame {
             this.grid[x][y] = b;
             minePanel.add(b);
         }
-        minePanel.setSize(40*h, 40*w);
+        minePanel.setSize(40 * h, 40 * w);
         add(minePanel);
-        
-        setSize(40*h+20, 40*w);
+
+        setSize(40 * h + 20, 40 * w);
         setLocationRelativeTo(null);
         setVisible(true);
     }
-    
+
     // TODO: Sketchy
-    public void updateView() throws Exception{
+    public void updateView() throws Exception {
         if (game.hasGameEnded()) {
             main.startGame(Difficulty.BEGINNER);
         }

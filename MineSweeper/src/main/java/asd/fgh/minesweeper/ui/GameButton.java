@@ -2,7 +2,6 @@ package asd.fgh.minesweeper.ui;
 
 import asd.fgh.minesweeper.logic.Game;
 import java.awt.Button;
-import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -33,12 +32,14 @@ public class GameButton extends Button implements MouseListener {
         } else setLabel(i + ""); // touched mines amount
     }
 
-    // TODO: Clicks don't seem to always register. Use the other methods?
-    // TODO: Implement both-button click: open adjacents assuming no mines if enough flagged to match count.
+    // TODO: Clicks don't seem to always register!
     @Override
     public void mouseClicked(MouseEvent me) {
-        // BUTTON2 appears to be scrollwheel.
-        if (me.getButton() == MouseEvent.BUTTON3) {
+        if (me.getButton() == MouseEvent.BUTTON2) { // BUTTON2 is scrollwheel button.
+            // TODO: Use both buttons click for this behaviour instead.
+            game.openAdjacentsAt(x, y);
+        }
+        else if (me.getButton() == MouseEvent.BUTTON3) {
             //System.out.println("Right click.");
             game.flagGridAt(x, y);
         }
