@@ -2,9 +2,12 @@ package asd.fgh.minesweeper.ui;
 
 import asd.fgh.minesweeper.logic.Game;
 import java.awt.Button;
+import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GameButton extends Button implements MouseListener {
 
@@ -24,17 +27,30 @@ public class GameButton extends Button implements MouseListener {
         if (i == -2) setLabel("!"); // flagged
         else if (i == -1) setLabel(" "); // unrevealed
         else if (i == 9) setLabel("*"); // mined
-        else setLabel(i + ""); // touched mines amount
-
+        else if (i == 0) {
+         //this.setBackground(Color.yellow);
+         setLabel("_");
+        } else setLabel(i + ""); // touched mines amount
     }
 
-    // TODO: Right click doesn't seem to always register... maybe it's just my mouse dying.
+    // TODO: Clicks don't seem to always register. Use the other methods?
+    // TODO: Implement both-button click: open adjacents assuming no mines if enough flagged to match count.
     @Override
     public void mouseClicked(MouseEvent me) {
         // BUTTON2 appears to be scrollwheel.
-        if (me.getButton() == MouseEvent.BUTTON3) game.flag(x, y);
-        else if (me.getButton() == MouseEvent.BUTTON1) game.open(x, y);
-        frame.updateView();
+        if (me.getButton() == MouseEvent.BUTTON3) {
+            //System.out.println("Right click.");
+            game.flagGridAt(x, y);
+        }
+        else if (me.getButton() == MouseEvent.BUTTON1) {
+            //System.out.println("Left click.");
+            game.openGridAt(x, y);
+        }
+        try {
+            frame.updateView();
+        } catch (Exception ex) {
+            Logger.getLogger(GameButton.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

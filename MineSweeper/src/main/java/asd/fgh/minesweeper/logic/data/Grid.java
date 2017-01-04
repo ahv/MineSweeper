@@ -3,21 +3,18 @@ package asd.fgh.minesweeper.logic.data;
 // Simple enough data class that it doesn't need tests?
 class Grid {
 
-    // TODO: Add some error throwing; a mine should never be revealed and flagged for example.
-    // TODO: Maybe implement something enum based instead?
-    private boolean revealed;
-    private boolean flagged;
+    private GridState state;
+    private final int x;
     private final int y;
     private final boolean hasMine;
     private final int touchesMines;
-    private final int x;
 
     Grid(int x, int y, boolean hasMine, int touchesMines) {
-        this.flagged = false;
+        this.x = x;
         this.y = y;
         this.hasMine = hasMine;
         this.touchesMines = touchesMines;
-        this.x = x;
+        this.state = GridState.UNREVEALED;
     }
 
     public int getY() {
@@ -28,34 +25,32 @@ class Grid {
         return x;
     }
 
-    @Override
-    public String toString() {
-        return hasMine ? "*" : "" + touchesMines; // TODO: Return other symbols for flagged/unrevealed
+    public int touchedMines() {
+        return touchesMines;
     }
 
     boolean isMined() {
         return hasMine;
     }
 
-    public boolean isFlagged() {
-        return flagged;
-    }
-
-    public void flipFlagged() {
-        this.flagged = !flagged;
-    }
-
     boolean isRevealed() {
-        return revealed;
+        return state == GridState.REVEALED;
     }
 
-    // TODO: Return value isn't used. Maybe still useful in a more optimized implementation.
-    boolean reveal() {
-        revealed = true;
-        return hasMine;
+    public boolean isFlagged() {
+        return state == GridState.FLAGGED;
     }
 
-    public int touchedMines() {
-        return touchesMines;
+    public void flipFlag() {
+        if (!isRevealed()) {
+            // TODO: This assumes that GridState enum doesn't get expanded.
+        state = state == GridState.UNREVEALED ? GridState.FLAGGED : GridState.UNREVEALED;
+        }
+    }
+
+    public void reveal() {
+        if (!isFlagged() || !isRevealed()) {
+            state = GridState.REVEALED;
+        }
     }
 }

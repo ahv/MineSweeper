@@ -1,7 +1,9 @@
 package asd.fgh.minesweeper.ui;
 
+import asd.fgh.minesweeper.logic.Difficulty;
 import asd.fgh.minesweeper.logic.Game;
 import asd.fgh.minesweeper.logic.GameSettings;
+import asd.fgh.minesweeper.logic.GameState;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
@@ -16,9 +18,12 @@ public class GameFrame extends Frame {
     private final GameButton[][] grid;
     private final Label timeLabel;
     private final Label mineLabel;
+    private final Main main;
     
-    public GameFrame(GameSettings s) throws HeadlessException, Exception {
-        this.game = new Game(s);
+    public GameFrame(Main main, Difficulty difficulty) throws HeadlessException, Exception {
+        this.main = main;
+        this.game = new Game(difficulty);
+        GameSettings s = game.getSettings();
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         
         Panel topPanel = new Panel(new FlowLayout());
@@ -52,7 +57,10 @@ public class GameFrame extends Frame {
     }
     
     // TODO: Sketchy
-    public void updateView(){
+    public void updateView() throws Exception{
+        if (game.hasGameEnded()) {
+            main.startGame(Difficulty.BEGINNER);
+        }
         int[][] snap = game.getBoardSnapshot();
         for (int x = 0; x < snap.length; x++) {
             for (int y = 0; y < snap[0].length; y++) {

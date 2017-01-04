@@ -5,69 +5,54 @@ import asd.fgh.minesweeper.logic.data.Board;
 public class Game {
 
     // TODO: Implement clock
-    // TODO: Implement game play logic
     private GameState state;
     private final Board board;
     private final GameSettings settings;
     private final Clock clock;
+    
+    public Game(int mines, int width, int height){
+        this(new GameSettings(mines, width, height));
+    }
 
-    public Game(GameSettings settings) {
-        this.settings = settings;
+    public Game(Difficulty difficulty) throws Exception {
+        this(GameSettings.generatePreset(difficulty));
+    }
+    
+    private Game(GameSettings s){
+        this.settings = s;
         this.state = GameState.READY;
-        this.board = new Board(settings);
+        this.board = new Board(s.getMines(), s.getWidth(), s.getHeight());
         this.clock = new Clock();
     }
-
-    // WARNING: Temporarily exposed Board for tests.
-    public Board getBoard() {
-        return board;
+    
+    public GameSettings getSettings() {
+        return settings;
     }
 
-    public GameState getState() {
-        return state;
-    }
-
-    private boolean isGameOver() {
+    public boolean hasGameEnded() {
         return (this.state == GameState.LOST || this.state == GameState.WON);
     }
 
-    // TODO: A fat method for basically all game logic. Chop it up?
-    public void open(int x, int y) {
-        if (isGameOver()) {
-            return;
-        }
-        if (board.isRevealed(x, y)) {
-            return;
-        }
+    public void openGridAt(int x, int y) {
+        if (hasGameEnded()) return;
         // Start clock on first open.
         if (state == GameState.READY) {
             this.clock.start();
             this.state = GameState.RUNNING;
         }
-        board.open(x, y);
-        if (board.isMined(x, y)) {
-            endGame(GameState.LOST);
-        }
-        if (winConditionMet()) {
-            endGame(GameState.WON);
-        }
+        board.openGridAt(x, y);
+        if (board.isMined(x, y)) finishGame(GameState.LOST);
+        else if (board.isCompletelyExplored()) finishGame(GameState.WON);
     }
 
-    public void flag(int x, int y) {
-        if (!isGameOver()) {
-            board.flipFlag(x, y);
-        }
+    public void flagGridAt(int x, int y) {
+        if (!hasGameEnded()) board.flipFlag(x, y);
     }
 
-    private void endGame(GameState result) {
+    // TODO: Scoreboard object?
+    private void finishGame(GameState result) {
         this.state = result;
         this.clock.stop();
-    }
-
-    // Win when all mineless grids are revealed.
-    private boolean winConditionMet() {
-        // TODO: Awkward
-        return (board.getRevealedAmount() + board.getMineAmount()) == (board.getWidth() * board.getHeight());
     }
 
     // TODO: Pretty obscure int based implementation, redo.

@@ -10,9 +10,9 @@ public class GameSettings {
     private final int mines;
     private final int width;
     private final int height;
-    private final Difficulty difficulty;
+    private final Difficulty difficulty; // TODO: difficulty is null with custom games
 
-    public static GameSettings generatePreset(Difficulty difficulty) throws Exception {
+    static GameSettings generatePreset(Difficulty difficulty) throws Exception {
         switch (difficulty) {
             case BEGINNER:
                 return new GameSettings(10, 9, 9, difficulty);
@@ -20,15 +20,13 @@ public class GameSettings {
                 return new GameSettings(40, 16, 16, difficulty);
             case ADVANCED:
                 return new GameSettings(99, 30, 16, difficulty);
-            case CUSTOM:
-                throw new Exception("Use constructor with custom difficulty instead!");
             default:
                 throw new Exception("Undefined preset difficulty!");
         }
     }
 
-    public GameSettings(int mines, int width, int height) {
-        this(mines, width, height, Difficulty.CUSTOM);
+    GameSettings(int mines, int width, int height) {
+        this(mines, width, height, null);
     }
 
     private GameSettings(int mines, int width, int height, Difficulty difficulty) {
