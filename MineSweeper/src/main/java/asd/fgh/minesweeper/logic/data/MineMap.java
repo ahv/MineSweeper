@@ -5,31 +5,34 @@ import java.util.Random;
 // Used internally by Board class when generating a new game.
 public class MineMap {
 
-    private final boolean[] mineMap;
+    private final boolean[][] mineMap;
     private final int width;
+    private final int height;
 
     MineMap(int mines, int width, int height) {
-        this.mineMap = new boolean[width * height];
+        this.mineMap = new boolean[width][height];
         this.width = width;
+        this.height = height;
         Random r = new Random();
-        int roll;
+        int roll, x, y;
         // TODO: High amount of mines might hitch. When mines > size consider "trues" as empty grids instead?
         while (mines > 0) {
             roll = r.nextInt(width * height);
-            if (mineMap[roll]) {
+            y = roll / width;
+            x = roll % width;
+            if (mineMap[x][y]) {
                 continue;
             }
-            mineMap[roll] = true;
+            mineMap[x][y] = true;
             mines--;
         }
     }
 
     boolean isMined(int x, int y) {
-        if (x < 0 || y < 0) {
+        if (x < 0 || y < 0 || x >= width || y >= height) {
             return false;
         }
-        int loc = y * width + x;
-        return (loc >= 0 && loc < mineMap.length && mineMap[loc]);
+        return mineMap[x][y];
     }
 
     int minedNeighbours(int x, int y) {
