@@ -4,5 +4,5 @@ Päivä | Tunnit | Kuvaus
 21.12.2016 | 3h | Repon ja projektin luonti, dependenssien säätö, aihemäärittelyä.
 22.12.2016 | 1h | Luonnostelua.
 27.12.2016 | 4h | Laajempaa luonnostelua, testejä. Kaavio.
-4.1.2017 | 15h | Deadline 3 & 4 + käyttöliittymää laahemmin.
+4.1.2017 | 16h | Deadline 3 & 4 + käyttöliittymää laahemmin, aihemäärittelyn tarkennus.
 ... | ... | ...
