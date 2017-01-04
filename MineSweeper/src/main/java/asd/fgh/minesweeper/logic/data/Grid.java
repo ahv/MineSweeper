@@ -15,7 +15,7 @@ class Grid {
 
     @Override
     public String toString() {
-        return hasMine ? "*" : "" + touchesMines; // TODO: Return another symbols for flagged/unrevealed
+        return hasMine ? "*" : "" + touchesMines; // TODO: Return other symbols for flagged/unrevealed
     }
 
     boolean isMined() {
@@ -34,8 +34,13 @@ class Grid {
         return revealed;
     }
 
+    // TODO: Return value isn't used. Maybe still useful in a more optimized implementation.
     boolean reveal() {
         revealed = true;
         return hasMine;
+    }
+
+    public int touchedMines() {
+        return touchesMines;
     }
 }

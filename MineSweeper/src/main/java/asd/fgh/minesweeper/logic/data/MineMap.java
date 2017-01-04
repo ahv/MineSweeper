@@ -3,6 +3,7 @@ package asd.fgh.minesweeper.logic.data;
 import java.util.Random;
 
 // Used internally by Board class when generating a new game.
+// Abstracts away creation logic and allows Board to be a simpler data class.
 public class MineMap {
 
     private final boolean[][] mineMap;

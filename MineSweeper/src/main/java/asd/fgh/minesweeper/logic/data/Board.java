@@ -1,8 +1,11 @@
 package asd.fgh.minesweeper.logic.data;
 
 // The only public class in asd.fgh.minesweeper.logic.data -- used as an instance in Game class.
+// Game class has the actual game logic, this class aspires to be data only.
+// Handles the recursive opening of grids though.
 
 import asd.fgh.minesweeper.logic.GameSettings;
+import java.util.ArrayList;
 
 public class Board {
 
@@ -49,5 +52,54 @@ public class Board {
             }
         }
         return mines;
+    }
+    
+    public int getRevealedAmount() {
+        int revealed = 0;
+        for (int i = 0; i < width * height; i++) {
+            int x = i % width;
+            int y = i / width;
+
+            if (grid[x][y].isRevealed()) {
+                revealed++;
+            }
+        }
+        return revealed;
+    }
+
+    public void open(int x, int y) {
+        if (!isLegalGrid(x, y)) return;
+        if (grid[x][y].isMined() || grid[x][y].touchedMines() != 0) {
+            grid[x][y].reveal();
+            return;
+        }
+        
+        // TODO: Recursive opening!!
+        System.out.println("Asdf");
+    }
+
+    // TODO: These pass-through methods seem wrong, but maybe they just smell funny.
+    public void flipFlag(int x, int y) {
+        if (isLegalGrid(x, y)) grid[x][y].flipFlagged();
+    }
+
+    public boolean isMined(int x, int y) {
+        if (isLegalGrid(x, y)) return grid[x][y].isMined();
+        return false;
+    }
+    
+    public boolean isRevealed(int x, int y) {
+        if (isLegalGrid(x, y)) return grid[x][y].isRevealed();
+        return false;
+    }
+
+    public int touchedMines(int x, int y) {
+        if (isLegalGrid(x, y)) return grid[x][y].touchedMines();
+        return 0;
+    }
+
+    public boolean isFlagged(int x, int y) {
+        if (isLegalGrid(x, y)) return grid[x][y].isFlagged();
+        return false;
     }
 }

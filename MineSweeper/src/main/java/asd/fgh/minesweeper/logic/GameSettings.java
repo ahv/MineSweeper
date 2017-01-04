@@ -34,7 +34,7 @@ public class GameSettings {
     private GameSettings(int mines, int width, int height, Difficulty difficulty) {
         // Validify parameters
         width = clamp(width, MINIMUM_WIDTH, MAXIMUM_WIDTH);
-        height = clamp(height, MINIMUM_HEIGHT, MINIMUM_HEIGHT);
+        height = clamp(height, MINIMUM_HEIGHT, MAXIMUM_HEIGHT);
         mines = clamp(mines, 1, width * height);
         this.mines = mines;
         this.width = width;
