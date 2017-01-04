@@ -26,11 +26,17 @@ public class GameTest {
     }
     
     @Test
+    public void canOpenGrid(){
+        Game g = new Game(1, 30, 16);
+        assertEquals(true, g.openGridAt(0, 0));
+    }
+    
+    @Test
     public void gameEndsWhenMineHit(){
         Game g = new Game(16, 4, 4);
-        assertEquals(false, g.hasGameEnded());
+        assertEquals(false, g.hasEnded());
         g.openGridAt(0, 0);
-        assertEquals(true, g.hasGameEnded());
+        assertEquals(true, g.hasEnded());
     }
     
     @Test
@@ -38,6 +44,23 @@ public class GameTest {
         Game g = new Game(16, 4, 4);
         g.flagGridAt(0, 0);
         g.openGridAt(0, 0);
-        assertEquals(false, g.hasGameEnded());
+        assertEquals(false, g.hasEnded());
+    }
+    
+    @Test
+    public void cantOpenAdjacentsOnUnrevealed(){
+        Game g = new Game(1, 30, 16);
+        g.openAdjacentsAt(0, 0);
+    }
+    
+    @Test
+    public void snapshotComplete(){
+        Game g = new Game(5, 9, 9);
+        int[][] s = g.getBoardSnapshot();
+        for (int x = 0; x < s.length; x++) {
+            for (int y = 0; y < s[x].length; y++) {
+                assertNotNull(s[x][y]);
+            }
+        }
     }
 }
