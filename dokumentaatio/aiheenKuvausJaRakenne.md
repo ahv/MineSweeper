@@ -14,4 +14,4 @@ Pelaaja.
 **Luokkakaavio:**
 
 
-![Luokkakaavio](https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/MineSweeperClass.png)
+![Luokkakaavio](https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/MineSweeperClassDiagram.png)
