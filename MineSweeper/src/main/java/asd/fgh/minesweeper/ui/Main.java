@@ -12,7 +12,7 @@ import asd.fgh.minesweeper.logic.persistence.Score;
 public class Main {
 
     private GameFrame gameFrame;
-    private GameEndFrame gameEndDialog;
+    private EndFrame endFrame;
     private final StartFrame startFrame;
 
     // TODO: Implement score and game set up
@@ -30,19 +30,19 @@ public class Main {
         if (gameFrame != null) {
             gameFrame.dispose();
         }
-        if (gameEndDialog != null) {
-            gameEndDialog.dispose();
+        if (endFrame != null) {
+            endFrame.dispose();
         }
         this.gameFrame = new GameFrame(this, difficulty);
     }
 
     public void showEndScreen(Score result) {
-        gameEndDialog = new GameEndFrame(this, result);
+        endFrame = new EndFrame(this, result);
     }
 
     public void showStartFrame() {
-        if (gameEndDialog != null){
-            gameEndDialog.dispose();
+        if (endFrame != null){
+            endFrame.dispose();
         }
         startFrame.setVisible(true);
     }

@@ -12,11 +12,11 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.BoxLayout;
 
-public class GameEndFrame extends Frame {
+public class EndFrame extends Frame {
 
     private final Main main;
 
-    public GameEndFrame(Main main, Score score) {
+    public EndFrame(Main main, Score score) {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
