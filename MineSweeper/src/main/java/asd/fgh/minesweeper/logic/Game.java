@@ -4,8 +4,8 @@ import asd.fgh.minesweeper.logic.data.Board;
 import asd.fgh.minesweeper.logic.persistence.Score;
 
 /**
- * The UI facing class; generates the board internally, has the required methods
- * for playing the game and knows when the Game is over.
+ * The UI facing class; has the required methods for playing the game,
+ * generates the board internally, knows if the game is over, produces a final score.
  *
  * @author ahv
  */
@@ -93,8 +93,7 @@ public class Game {
      *
      * @param x X-coordinate.
      * @param y Y-coordinate.
-     * @return Returns true if game is playing and the grid hasn't been
-     * revealed.
+     * @return Returns true if flagging/unflagging was successful.
      */
     public boolean flagGridAt(int x, int y) {
         if (preCheck() && !board.isRevealed(x, y)) {
@@ -148,6 +147,10 @@ public class Game {
 
     // TODO: Shouldn't be called while the game is still going.
     // Maybe instead of returning null, return some sort of invalid score?
+    /**
+     * Produces final score of the game.
+     * @return Returns null if the game hasn't finished, otherwise a score object.
+     */
     public Score getFinalScore() {
         if (hasEnded()) {
             return new Score(settings.getDifficulty(), time.getElapsedTime(), this.isWon());
