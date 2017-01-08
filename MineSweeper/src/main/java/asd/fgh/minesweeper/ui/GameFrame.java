@@ -105,6 +105,6 @@ public class GameFrame extends Frame {
             // spawn name entry score window
         } else {
         }
-        main.showEndScreen();
+        main.showEndScreen(game.getSettings());
     }
 }

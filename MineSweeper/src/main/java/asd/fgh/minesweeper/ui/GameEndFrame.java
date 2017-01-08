@@ -1,6 +1,6 @@
 package asd.fgh.minesweeper.ui;
 
-import asd.fgh.minesweeper.logic.Difficulty;
+import asd.fgh.minesweeper.logic.GameSettings;
 import java.awt.Button;
 import java.awt.FlowLayout;
 import java.awt.Frame;
@@ -13,10 +13,10 @@ import java.awt.event.WindowEvent;
 import javax.swing.BoxLayout;
 
 public class GameEndFrame extends Frame {
-
+    
     private final Main main;
-
-    public GameEndFrame(Main main) {
+    
+    public GameEndFrame(Main main, GameSettings previousSettings) {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -25,40 +25,33 @@ public class GameEndFrame extends Frame {
         });
         this.main = main;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        Panel titlePanel = new Panel(new FlowLayout());
-        add(titlePanel);
-        Label titleText = new Label("Hi");
-        titlePanel.add(titleText);
-        Button newBeginnerGameButton = new Button("New Beginner Game");
-        newBeginnerGameButton.addActionListener(new ActionListener() {
+        add(new Label("Highscores", Label.CENTER));
+        add(new Label("Beginner:"));
+        add(new Label("Intermediate:"));
+        add(new Label("Advanced:"));
+        //TODO: scores
+
+        Panel buttonPanel = new Panel(new FlowLayout());
+        Button startFrameButton = new Button("Change difficulty");
+        startFrameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                main.startGame(Difficulty.BEGINNER);
-
+                main.showStartFrame();
             }
         });
-        Button newIntermediateGameButton = new Button("New Intermediate Game");
-        newIntermediateGameButton.addActionListener(new ActionListener() {
+        Button newGameButton = new Button("Play again");
+        newGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                main.startGame(Difficulty.INTERMEDIATE);
-
+                main.startGame(previousSettings.getDifficulty());
             }
         });
-        Button newAdvancedGameButton = new Button("New Advanced Game");
-        newAdvancedGameButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                main.startGame(Difficulty.ADVANCED);
-
-            }
-        });
-        titlePanel.add(newBeginnerGameButton);
-        titlePanel.add(newIntermediateGameButton);
-        titlePanel.add(newAdvancedGameButton);
+        buttonPanel.add(startFrameButton);
+        buttonPanel.add(newGameButton);
+        add(buttonPanel);
         setSize(200, 200);
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
+    
 }

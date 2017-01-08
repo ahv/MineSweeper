@@ -14,47 +14,47 @@ public class GameTest {
         g = new Game(Difficulty.ADVANCED);
         assertNotNull(g);
     }
-    
+
     // TODO: Assumes that clamp range doesn't change..
     @Test
-    public void canCreateCustomGame(){
+    public void canCreateCustomGame() {
         Game g = new Game(16, 4, 4);
         GameSettings s = g.getSettings();
         assertEquals(4, s.getWidth());
         assertEquals(4, s.getHeight());
         assertEquals(16, s.getMines());
     }
-    
+
     @Test
-    public void canOpenGrid(){
+    public void canOpenGrid() {
         Game g = new Game(1, 30, 16);
         assertEquals(true, g.openGridAt(0, 0));
     }
-    
+
     @Test
-    public void gameEndsWhenMineHit(){
+    public void gameEndsWhenMineHit() {
         Game g = new Game(16, 4, 4);
         assertEquals(false, g.hasEnded());
         g.openGridAt(0, 0);
         assertEquals(true, g.hasEnded());
     }
-    
+
     @Test
-    public void cantOpenFlagged(){
+    public void cantOpenFlagged() {
         Game g = new Game(16, 4, 4);
         g.flagGridAt(0, 0);
         g.openGridAt(0, 0);
         assertEquals(false, g.hasEnded());
     }
-    
+
     @Test
-    public void cantOpenAdjacentsOnUnrevealed(){
+    public void cantOpenAdjacentsOnUnrevealed() {
         Game g = new Game(1, 30, 16);
         g.openAdjacentsAt(0, 0);
     }
-    
+
     @Test
-    public void snapshotComplete(){
+    public void snapshotComplete() {
         Game g = new Game(5, 9, 9);
         int[][] s = g.getBoardSnapshot();
         for (int x = 0; x < s.length; x++) {

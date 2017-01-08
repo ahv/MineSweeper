@@ -82,10 +82,8 @@ public class Game {
         }
         if (board.openGridAt(x, y)) { // if hit mine
             endGame(GameState.LOST);
-            return false;
         } else if (board.isCompletelyExplored()) {
             endGame(GameState.WON);
-            return false;
         }
         return true;
     }
