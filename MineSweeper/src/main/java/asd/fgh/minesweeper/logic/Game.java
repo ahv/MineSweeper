@@ -1,7 +1,7 @@
 package asd.fgh.minesweeper.logic;
 
 import asd.fgh.minesweeper.logic.data.Board;
-import asd.fgh.minesweeper.logic.persistence.Score;
+import asd.fgh.minesweeper.persistence.Score;
 
 /**
  * The UI facing class; has the required methods for playing the game,

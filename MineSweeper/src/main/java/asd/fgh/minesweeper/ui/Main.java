@@ -1,7 +1,7 @@
 package asd.fgh.minesweeper.ui;
 
 import asd.fgh.minesweeper.logic.Difficulty;
-import asd.fgh.minesweeper.logic.persistence.Score;
+import asd.fgh.minesweeper.persistence.Score;
 
 /**
  * Class to facilitate switching between "screens", i.e. different frames --

@@ -1,6 +1,6 @@
 package asd.fgh.minesweeper.ui;
 
-import asd.fgh.minesweeper.logic.persistence.Score;
+import asd.fgh.minesweeper.persistence.Score;
 import java.awt.Button;
 import java.awt.FlowLayout;
 import java.awt.Frame;

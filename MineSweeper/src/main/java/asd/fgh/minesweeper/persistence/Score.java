@@ -1,4 +1,4 @@
-package asd.fgh.minesweeper.logic.persistence;
+package asd.fgh.minesweeper.persistence;
 
 import asd.fgh.minesweeper.logic.Difficulty;
 
