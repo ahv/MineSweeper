@@ -81,6 +81,7 @@ public class Board {
                 revealed++;
             }
         }
+        System.out.println("State: " + (revealed + mines) + " of " + width * height);
         return revealed + mines == width * height;
     }
 
@@ -91,16 +92,20 @@ public class Board {
      *
      * @param x X-coordinate.
      * @param y Y-coordinate.
-     * @return Returns true if one or more grid was opened.
+     * @return Returns true if mine was hit.
      */
     public boolean openGridAt(int x, int y) {
         if (!coordinatesAreInBoundary(x, y)) {
             return false;
         }
-        if (grid[x][y].isMined() || grid[x][y].touchedMines() != 0) {
+        // Skip recursion when hitting a mine or grid is touching a mine.
+        if (grid[x][y].isMined()) {
             grid[x][y].reveal();
             return true;
-            // Skip recursion when hitting a mine or grid is touching a mine.
+
+        } else if (grid[x][y].touchedMines() != 0) {
+            grid[x][y].reveal();
+            return false;
         }
         // Recursive opening
         ArrayList<Grid> openable = new ArrayList<>();
@@ -109,7 +114,7 @@ public class Board {
         for (Grid g : openable) {
             g.reveal();
         }
-        return true;
+        return false;
     }
 
     // TODO: What these methods in this class provide could actually be better implemented in Grid class.
@@ -141,16 +146,21 @@ public class Board {
      *
      * @param x X-coordinate.
      * @param y Y-coordinate.
+     * @return True if a mine was hit.
      */
-    public void openAdjacentsAt(int x, int y) {
+    public boolean openAdjacentsAt(int x, int y) {
+        boolean hitMine = false;
         if (!coordinatesAreInBoundary(x, y)) {
-            return;
+            return false;
         }
         for (Grid g : neighbourGrids(x, y)) {
             if (g != null && !g.isFlagged()) {
-                openGridAt(g.getX(), g.getY());
+                if (openGridAt(g.getX(), g.getY())) {
+                    hitMine = true;
+                }
             }
         }
+        return hitMine;
     }
 
     private Grid gridAt(int x, int y) {

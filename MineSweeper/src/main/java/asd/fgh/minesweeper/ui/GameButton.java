@@ -2,7 +2,10 @@ package asd.fgh.minesweeper.ui;
 
 import asd.fgh.minesweeper.logic.Game;
 import java.awt.Button;
+import java.awt.Canvas;
+import java.awt.FlowLayout;
 import java.awt.HeadlessException;
+import java.awt.Panel;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.logging.Level;
@@ -10,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  * Extended Button component for GameFrame.
- * 
+ *
  * @author ahv
  */
 public class GameButton extends Button implements MouseListener {
