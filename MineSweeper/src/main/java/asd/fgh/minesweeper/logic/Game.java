@@ -14,7 +14,7 @@ public class Game {
     private GameState state;
     private final Board board;
     private final GameSettings settings;
-    private final StopWatch clock;
+    private final StopWatch time;
 
     /**
      * Constructor for custom games, values are validated internally in a
@@ -47,7 +47,7 @@ public class Game {
         this.settings = s;
         this.state = GameState.READY;
         this.board = new Board(s.getMines(), s.getWidth(), s.getHeight());
-        this.clock = new StopWatch();
+        this.time = new StopWatch();
     }
 
     public GameSettings getSettings() {
@@ -130,7 +130,7 @@ public class Game {
     private boolean preCheck() {
         // Starts clock on first action.
         if (state == GameState.READY) {
-            this.clock.start();
+            this.time.start();
             this.state = GameState.RUNNING;
         }
         return !hasEnded();
@@ -138,21 +138,21 @@ public class Game {
 
     private void endGame(GameState result) {
         state = result;
-        clock.stop();
+        time.stop();
     }
 
     public int getElapsedTime() {
         if (state == GameState.READY) {
             return 0;
         }
-        return clock.getElapsedTime();
+        return time.getElapsedTime();
     }
 
     // TODO: Shouldn't be called while the game is still going.
     // Maybe instead of returning null, return some sort of invalid score?
     public Score getFinalScore() {
         if (hasEnded()) {
-            return new Score(settings.getDifficulty(), clock.getElapsedTime());
+            return new Score(settings.getDifficulty(), time.getElapsedTime());
         } else {
             return null;
         }
