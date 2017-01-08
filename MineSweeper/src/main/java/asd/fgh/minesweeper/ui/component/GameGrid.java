@@ -1,12 +1,13 @@
-package asd.fgh.minesweeper.ui;
+package asd.fgh.minesweeper.ui.component;
 
 import asd.fgh.minesweeper.logic.Game;
+import asd.fgh.minesweeper.ui.GameFrame;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.Panel;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,7 +19,7 @@ public class GameGrid extends Panel {
     private final int x;
     private final int y;
 
-    GameGrid(GameFrame frame, Game game, int x, int y) {
+    public GameGrid(GameFrame frame, Game game, int x, int y) {
         this.x = x;
         this.y = y;
         this.game = game;
@@ -29,12 +30,14 @@ public class GameGrid extends Panel {
         add(b);
         b.setVisible(true);
         l = new Label("", Label.CENTER);
-        
+
         // TODO: Refactor this mess
-        l.addMouseListener(new MouseListener() {
+        l.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent me) {
-                if (game.hasEnded()) return;
+            public void mouseReleased(MouseEvent me) {
+                if (game.hasEnded()) {
+                    return;
+                }
                 if (me.getButton() == MouseEvent.BUTTON2) {
                     game.openAdjacentsAt(x, y);
                     try {
@@ -44,26 +47,10 @@ public class GameGrid extends Panel {
                     }
                 }
             }
-
-            @Override
-            public void mousePressed(MouseEvent me) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent me) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent me) {
-            }
-
-            @Override
-            public void mouseExited(MouseEvent me) {
-            }
         });
     }
 
-    void setVisualState(int i) {
+    public void setVisualState(int i) {
         if (i == -2) {
             b.setLabel("!"); // flagged
         } else if (i == -1) {
@@ -72,6 +59,7 @@ public class GameGrid extends Panel {
             remove(b);
             add(l);
             l.setVisible(true);
+            l.setBackground(Color.RED);
             l.setText("*");
         } else if (i == 0) { // revealed
             remove(b);

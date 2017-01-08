@@ -81,7 +81,6 @@ public class Board {
                 revealed++;
             }
         }
-        System.out.println("State: " + (revealed + mines) + " of " + width * height);
         return revealed + mines == width * height;
     }
 

@@ -139,7 +139,13 @@ public class Game {
     private void endGame(GameState result) {
         state = result;
         clock.stop();
-        System.out.println("GAME ENDED: " + result + " -- " + clock.getElapsedTime());
+    }
+
+    public int getElapsedTime() {
+        if (state == GameState.READY) {
+            return 0;
+        }
+        return clock.getElapsedTime();
     }
 
     // TODO: Shouldn't be called while the game is still going.

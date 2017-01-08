@@ -22,6 +22,7 @@ public class Score {
     }
 
     public String getName() {
+        if (name == null) return "Unknown";
         return name;
     }
 
