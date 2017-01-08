@@ -11,14 +11,17 @@ public class StopWatch {
     private long stopTime;
     private boolean running;
 
-    public StopWatch() {
-    }
-
+    /**
+     * Start the stopwatch.
+     */
     public void start() {
         startTime = System.currentTimeMillis();
         running = true;
     }
 
+    /**
+     * Stop the stopwatch.
+     */
     public void stop() {
         stopTime = System.currentTimeMillis();
         running = false;

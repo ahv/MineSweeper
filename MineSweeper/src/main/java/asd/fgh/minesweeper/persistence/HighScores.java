@@ -13,10 +13,7 @@ public class HighScores implements Serializable {
     private ArrayList<Score> beginnerScores;
     private ArrayList<Score> intermediateScores;
     private ArrayList<Score> advancedScores;
-
-    public HighScores() {
-    }
-
+    
     /**
      * Checks if a score is eligible for a position in high scores.
      *

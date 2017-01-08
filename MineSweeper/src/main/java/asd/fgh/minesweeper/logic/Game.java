@@ -138,6 +138,10 @@ public class Game {
         time.stop();
     }
 
+    /**
+     * Get seconds since first move, up until game end.
+     * @return Elapsed game time in seconds.
+     */
     public int getElapsedTime() {
         if (state == GameState.READY) {
             return 0;

@@ -170,12 +170,23 @@ public class Board {
     }
 
     // TODO: These methods that just pass through seem wrong, maybe they just smell funny?
+    /**
+     * Flips a flag in grid.
+     * @param x x-coordinate.
+     * @param y y-coordinate.
+     */
     public void flipFlag(int x, int y) {
         if (coordinatesAreInBoundary(x, y)) {
             grid[x][y].flipFlag();
         }
     }
 
+    /**
+     * Check if grid is mined.
+     * @param x x-coordinate.
+     * @param y y-coordinate.
+     * @return True if grid has mine.
+     */
     public boolean isMined(int x, int y) {
         if (coordinatesAreInBoundary(x, y)) {
             return grid[x][y].isMined();
@@ -183,6 +194,12 @@ public class Board {
         return false;
     }
 
+    /**
+     * Check if grid has been revealed.
+     * @param x x-coordinate.
+     * @param y y-coordinate.
+     * @return True if grid is revealed.
+     */
     public boolean isRevealed(int x, int y) {
         if (coordinatesAreInBoundary(x, y)) {
             return grid[x][y].isRevealed();
@@ -190,13 +207,25 @@ public class Board {
         return false;
     }
 
+    /**
+     * Check if grid is flagged.
+     * @param x x-coordinate.
+     * @param y y-coordinate.
+     * @return True if grid is flagged.
+     */
     public boolean isFlagged(int x, int y) {
         if (coordinatesAreInBoundary(x, y)) {
             return grid[x][y].isFlagged();
         }
         return false;
     }
-
+    
+    /**
+     * Count how many mines the specified grid is touching.
+     * @param x x-coordinate.
+     * @param y y-coordinate.
+     * @return Touched mines count.
+     */
     public int touchedMinesAt(int x, int y) {
         if (coordinatesAreInBoundary(x, y)) {
             return grid[x][y].touchedMines();
@@ -204,6 +233,12 @@ public class Board {
         return 0;
     }
 
+    /**
+     * Count how many flags the specified grid is touching.
+     * @param x x-coordinate.
+     * @param y y-coordinate.
+     * @return Touched flags count.
+     */
     public int touchedFlagsAt(int x, int y) {
         int flags = 0;
         if (coordinatesAreInBoundary(x, y)) {
