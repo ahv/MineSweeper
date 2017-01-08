@@ -14,12 +14,12 @@ public class StopWatch {
     public StopWatch() {
     }
 
-    void start() {
+    public void start() {
         startTime = System.currentTimeMillis();
         running = true;
     }
 
-    void stop() {
+    public void stop() {
         stopTime = System.currentTimeMillis();
         running = false;
     }

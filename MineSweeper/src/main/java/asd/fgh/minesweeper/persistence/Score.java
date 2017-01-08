@@ -1,13 +1,14 @@
 package asd.fgh.minesweeper.persistence;
 
 import asd.fgh.minesweeper.logic.Difficulty;
+import java.io.Serializable;
 
 /**
  * Produced from a game instance, describes the result of a game.
  *
  * @author ahv
  */
-public class Score {
+public class Score implements Serializable {
 
     private final Difficulty difficulty;
     private final int time;

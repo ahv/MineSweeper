@@ -53,6 +53,14 @@ public class GameTest {
         g.openAdjacentsAt(0, 0);
     }
 
+    // TODO: Chance to hit a mine...
+    @Test
+    public void isWonReturnsTrueWhenWon() {
+        Game g = new Game(1, 30, 16);
+        g.openGridAt(0, 0);
+        assertTrue(g.isWon());
+    }
+
     @Test
     public void snapshotComplete() {
         Game g = new Game(5, 9, 9);
@@ -62,5 +70,18 @@ public class GameTest {
                 assertNotNull(s[x][y]);
             }
         }
+    }
+
+    @Test
+    public void cantGetFinalScoreWhenGameNotEnded() {
+        Game g = new Game(5, 9, 9);
+        assertNull(g.getFinalScore());
+    }
+    
+        @Test
+    public void canGetFinalScoreWhenGameEnded() {
+        Game g = new Game(16, 4, 4);
+        g.openGridAt(0, 0);
+        assertNotNull(g.getFinalScore());
     }
 }
