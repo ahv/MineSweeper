@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 15,
+      <title>File: 17,
              Errors: 1,
              Warnings: 0,
              Infos: 0
@@ -46,21 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.ui.GameButton.java">asd/fgh/minesweeper/ui/GameButton.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.logic.persistence.Score.java">asd/fgh/minesweeper/logic/persistence/Score.java</a>
+                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.ui.component.GameGrid.java">asd/fgh/minesweeper/ui/component/GameGrid.java</a>
                 </td>
                 <td>
                   0
@@ -75,6 +61,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.ui.GameFrame.java">asd/fgh/minesweeper/ui/GameFrame.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.persistence.Score.java">asd/fgh/minesweeper/persistence/Score.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +116,21 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.logic.persistence.HighScores.java">asd/fgh/minesweeper/logic/persistence/HighScores.java</a>
+                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.ui.EndFrame.java">asd/fgh/minesweeper/ui/EndFrame.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.persistence.HighScores.java">asd/fgh/minesweeper/persistence/HighScores.java</a>
                 </td>
                 <td>
                   0
@@ -172,7 +186,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.ui.GameEndDialog.java">asd/fgh/minesweeper/ui/GameEndDialog.java</a>
+                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.ui.component.GameButton.java">asd/fgh/minesweeper/ui/component/GameButton.java</a>
                 </td>
                 <td>
                   0
@@ -243,6 +257,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.logic.StopWatch.java">asd/fgh/minesweeper/logic/StopWatch.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#asd.fgh.minesweeper.ui.StartFrame.java">asd/fgh/minesweeper/ui/StartFrame.java</a>
                 </td>
                 <td>
                   0
