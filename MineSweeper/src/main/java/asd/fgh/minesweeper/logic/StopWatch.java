@@ -26,12 +26,15 @@ public class StopWatch {
 
     /**
      * Gives the elapsed time since first move in seconds.
+     *
      * @return Elapsed time from first move, 0 if hasn't been started yet.
      */
     public int getElapsedTime() {
-         // long defaults to 0; means that watch hasn't been started
-         // unless system millis happen to be 0 when clock gets started, then whoops.
-        if (startTime == 0) return 0;
+        // long defaults to 0; means that watch hasn't been started
+        // unless system millis happen to be 0 when clock gets started, then whoops.
+        if (startTime == 0) {
+            return 0;
+        }
         if (running) {
             return (int) (System.currentTimeMillis() - startTime) / 1000;
         }

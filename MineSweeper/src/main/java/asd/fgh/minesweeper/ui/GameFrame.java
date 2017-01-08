@@ -99,13 +99,6 @@ public class GameFrame extends Frame {
 
     // TODO: UI is handling score logic, tsk tsk
     private void handleGameEnd() {
-        if (game.isWon()) {
-            Score s = game.getFinalScore();
-            HighScores.isEligible(s);
-            // spawn name entry score window
-        } else {
-
-        }
         main.showEndScreen(game.getFinalScore());
     }
 }

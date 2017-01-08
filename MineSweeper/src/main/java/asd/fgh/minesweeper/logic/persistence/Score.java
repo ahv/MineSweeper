@@ -4,6 +4,7 @@ import asd.fgh.minesweeper.logic.Difficulty;
 
 /**
  * Produced from a game instance, describes the result of a game.
+ *
  * @author ahv
  */
 public class Score {
@@ -33,10 +34,13 @@ public class Score {
 
     /**
      * Name associated with the score.
+     *
      * @return Name or "Unknown" if no name has been entered.
      */
     public String getName() {
-        if (name == null) return "Unknown";
+        if (name == null) {
+            return "Unknown";
+        }
         return name;
     }
 

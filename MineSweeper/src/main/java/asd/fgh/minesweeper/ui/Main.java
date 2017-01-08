@@ -41,7 +41,7 @@ public class Main {
     }
 
     public void showStartFrame() {
-        if (endFrame != null){
+        if (endFrame != null) {
             endFrame.dispose();
         }
         startFrame.setVisible(true);
