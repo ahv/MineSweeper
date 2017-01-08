@@ -8,5 +8,4 @@ public class StartFrame extends Frame {
     public StartFrame() {
         //TODO: game types + custom
     }
-    
 }
