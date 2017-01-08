@@ -22,3 +22,10 @@ Pelaaja.
 
 
 ![Luokkakaavio](https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/MineSweeperClassDiagram.png)
+
+
+**Sekvenssikaaviot:**
+
+![Sekvenssikaavio1](https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/SequenceDiagram1.png)
+
+![Sekvenssikaavio2](https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/SequenceDiagram2.png)
