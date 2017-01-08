@@ -24,7 +24,7 @@ public class EndFrame extends Frame {
             }
         });
         this.main = main;
-        if (score.wasWon()) {
+        if (score.isWon()) {
             setTitle("You won!");
         } else {
             setTitle("You lost...");

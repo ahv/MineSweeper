@@ -27,7 +27,7 @@ public class Score implements Serializable {
         this.won = won;
     }
 
-    public boolean wasWon() {
+    public boolean isWon() {
         return won;
     }
 
