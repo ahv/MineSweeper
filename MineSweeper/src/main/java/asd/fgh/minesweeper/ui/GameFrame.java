@@ -38,8 +38,9 @@ public class GameFrame extends Frame {
                 System.exit(0);
             }
         });
-        // TODO: Set font to bold
-        //Font font = getFont();
+        
+        setFont(new Font("Arial", Font.BOLD, 16));
+        
         this.main = main;
         this.game = new Game(difficulty);
         GameSettings s = game.getSettings();

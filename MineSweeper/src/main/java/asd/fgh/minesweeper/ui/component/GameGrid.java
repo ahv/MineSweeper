@@ -60,7 +60,7 @@ public class GameGrid extends Panel {
             add(l);
             l.setVisible(true);
             l.setBackground(Color.RED);
-            l.setText("*");
+            l.setText("X");
         } else if (i == 0) { // revealed
             remove(b);
             add(l);
