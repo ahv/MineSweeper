@@ -38,9 +38,9 @@ public class GameFrame extends Frame {
                 System.exit(0);
             }
         });
-        
+        setTitle("Minsweeper");
         setFont(new Font("Arial", Font.BOLD, 16));
-        
+
         this.main = main;
         this.game = new Game(difficulty);
         GameSettings s = game.getSettings();
@@ -104,7 +104,8 @@ public class GameFrame extends Frame {
             HighScores.isEligible(s);
             // spawn name entry score window
         } else {
+
         }
-        main.showEndScreen(game.getSettings());
+        main.showEndScreen(game.getFinalScore());
     }
 }

@@ -1,6 +1,6 @@
 package asd.fgh.minesweeper.ui;
 
-import asd.fgh.minesweeper.logic.GameSettings;
+import asd.fgh.minesweeper.logic.persistence.Score;
 import java.awt.Button;
 import java.awt.FlowLayout;
 import java.awt.Frame;
@@ -13,10 +13,10 @@ import java.awt.event.WindowEvent;
 import javax.swing.BoxLayout;
 
 public class GameEndFrame extends Frame {
-    
+
     private final Main main;
-    
-    public GameEndFrame(Main main, GameSettings previousSettings) {
+
+    public GameEndFrame(Main main, Score score) {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -24,6 +24,11 @@ public class GameEndFrame extends Frame {
             }
         });
         this.main = main;
+        if (score.isWon()) {
+            setTitle("You won!");
+        } else {
+            setTitle("You lost...");
+        }
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         add(new Label("Highscores", Label.CENTER));
         add(new Label("Beginner:"));
@@ -43,7 +48,7 @@ public class GameEndFrame extends Frame {
         newGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                main.startGame(previousSettings.getDifficulty());
+                main.startGame(score.getDifficulty());
             }
         });
         buttonPanel.add(startFrameButton);
@@ -53,5 +58,5 @@ public class GameEndFrame extends Frame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-    
+
 }

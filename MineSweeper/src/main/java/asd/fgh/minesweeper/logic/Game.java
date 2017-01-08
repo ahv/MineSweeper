@@ -150,7 +150,7 @@ public class Game {
     // Maybe instead of returning null, return some sort of invalid score?
     public Score getFinalScore() {
         if (hasEnded()) {
-            return new Score(settings.getDifficulty(), time.getElapsedTime());
+            return new Score(settings.getDifficulty(), time.getElapsedTime(), this.isWon());
         } else {
             return null;
         }

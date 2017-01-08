@@ -1,7 +1,7 @@
 package asd.fgh.minesweeper.ui;
 
 import asd.fgh.minesweeper.logic.Difficulty;
-import asd.fgh.minesweeper.logic.GameSettings;
+import asd.fgh.minesweeper.logic.persistence.Score;
 
 /**
  * Class to facilitate switching between "screens", i.e. different frames --
@@ -36,8 +36,8 @@ public class Main {
         this.gameFrame = new GameFrame(this, difficulty);
     }
 
-    public void showEndScreen(GameSettings settings) {
-        gameEndDialog = new GameEndFrame(this, settings);
+    public void showEndScreen(Score result) {
+        gameEndDialog = new GameEndFrame(this, result);
     }
 
     public void showStartFrame() {
