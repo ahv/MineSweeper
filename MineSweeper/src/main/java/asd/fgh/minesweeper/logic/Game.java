@@ -64,6 +64,10 @@ public class Game {
         return (this.state == GameState.LOST || this.state == GameState.WON);
     }
 
+    public boolean isWon() {
+        return (state == GameState.WON);
+    }
+
     /**
      * Player input to attempt to open a grid in the game.
      *
@@ -117,10 +121,9 @@ public class Game {
         if (board.touchedFlagsAt(x, y) == board.touchedMinesAt(x, y)) {
             if (board.openAdjacentsAt(x, y)) { // if mine was hit
                 endGame(GameState.LOST);
+            } else if (board.isCompletelyExplored()) {
+                endGame(GameState.WON);
             }
-        }
-        if (!hasEnded() && board.isCompletelyExplored()) {
-            endGame(GameState.WON);
         }
     }
 
@@ -138,11 +141,11 @@ public class Game {
         clock.stop();
         System.out.println("GAME ENDED: " + result + " -- " + clock.getElapsedTime());
     }
-    
+
     // TODO: Shouldn't be called while the game is still going.
     // Maybe instead of returning null, return some sort of invalid score?
-    public Score getFinalScore(){
-        if (hasEnded()){
+    public Score getFinalScore() {
+        if (hasEnded()) {
             return new Score(settings.getDifficulty(), clock.getElapsedTime());
         } else {
             return null;

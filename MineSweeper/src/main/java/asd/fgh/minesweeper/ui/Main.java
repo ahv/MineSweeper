@@ -11,6 +11,7 @@ import asd.fgh.minesweeper.logic.Difficulty;
 public class Main {
 
     private GameFrame gameFrame;
+    private GameEndDialog gameEndDialog;
 
     // TODO: Implement score and game set up
     public static void main(String[] args) throws Exception {
@@ -23,6 +24,13 @@ public class Main {
         if (gameFrame != null) {
             gameFrame.dispose();
         }
+        if (gameEndDialog != null){
+            gameEndDialog.dispose();
+        }
         this.gameFrame = new GameFrame(this, difficulty);
+    }
+    
+    public void showEndScreen(){
+        gameEndDialog = new GameEndDialog(this);
     }
 }
