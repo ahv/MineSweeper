@@ -12,4 +12,12 @@ public class StopWatchTest {
         sw.stop();
         assertTrue(sw.getElapsedTime() >= 0);
     }
+    
+    @Test
+    public void elapsedTimeIncreasesAfterStartAndWait() throws InterruptedException{
+        StopWatch sw = new StopWatch();
+        sw.start();
+        Thread.sleep(2000);
+        assertTrue(sw.getElapsedTime() >= 1);
+    }
 }

@@ -41,6 +41,9 @@ public class BoardTest {
     public void canOpenAdjacents(){
         Board b = new Board(1, 20, 20);
         b.openAdjacentsAt(0, 0);
+        assertTrue(b.isRevealed(1, 0));
+        assertTrue(b.isRevealed(1, 1));
+        assertTrue(b.isRevealed(0, 1));
     }
 
 }

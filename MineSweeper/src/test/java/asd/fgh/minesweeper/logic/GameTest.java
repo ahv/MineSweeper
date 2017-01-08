@@ -51,6 +51,7 @@ public class GameTest {
     public void cantOpenAdjacentsOnUnrevealed() {
         Game g = new Game(1, 30, 16);
         g.openAdjacentsAt(0, 0);
+        assertFalse(g.hasEnded()); // TODO: ehh..
     }
 
     // TODO: Chance to hit a mine...
@@ -59,6 +60,13 @@ public class GameTest {
         Game g = new Game(1, 30, 16);
         g.openGridAt(0, 0);
         assertTrue(g.isWon());
+    }
+    
+    @Test
+    public void isWonReturnsFalseWhenLost(){
+        Game g = new Game(16, 4, 4);
+        g.openGridAt(0, 0);
+        assertFalse(g.isWon());
     }
 
     @Test
@@ -77,11 +85,26 @@ public class GameTest {
         Game g = new Game(5, 9, 9);
         assertNull(g.getFinalScore());
     }
-    
-        @Test
+
+    @Test
     public void canGetFinalScoreWhenGameEnded() {
         Game g = new Game(16, 4, 4);
         g.openGridAt(0, 0);
         assertNotNull(g.getFinalScore());
+    }
+
+    @Test
+    public void getElapsedTimeReturnsAvalue() {
+        Game g = new Game(16, 4, 4);
+        assertTrue(g.getElapsedTime() >= 0);
+    }
+
+    // TODO: Can hit a mine..........
+    @Test
+    public void timerTstartsAfterFirstMove() throws InterruptedException {
+        Game g = new Game(10, 30, 16);
+        g.openGridAt(0, 0);
+        Thread.sleep(2000);
+        assertTrue(g.getElapsedTime() > 0);
     }
 }
