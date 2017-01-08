@@ -4,8 +4,6 @@ import asd.fgh.minesweeper.ui.component.GameGrid;
 import asd.fgh.minesweeper.logic.Difficulty;
 import asd.fgh.minesweeper.logic.Game;
 import asd.fgh.minesweeper.logic.GameSettings;
-import asd.fgh.minesweeper.logic.persistence.HighScores;
-import asd.fgh.minesweeper.logic.persistence.Score;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
