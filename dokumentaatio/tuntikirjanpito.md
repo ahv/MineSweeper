@@ -5,4 +5,5 @@ Päivä | Tunnit | Kuvaus
 22.12.2016 | 1h | Luonnostelua.
 27.12.2016 | 4h | Laajempaa luonnostelua, testejä. Kaavio.
 4.1.2017 | 16h | Deadline 3 & 4 + käyttöliittymää laajemmin, aihemäärittelyn tarkennus.
+8.1.2017 | 16h | Karmeeta koodia, mutta demokunto. Palautuksen kriteerit. Koodikatselmukset.
 ... | ... | ...
