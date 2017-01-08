@@ -8,4 +8,4 @@ Klooni microsoftin omasta käyttöjärjestelmien mukana tulevasta miinaharavasta
 
 [Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/checkstyle-raportti/site/checkstyle.html)
 
-[Pit-raportti](https://htmlpreview.github.io/?https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/pit-raportti/201701041553/index.html)
+[Pit-raportti](https://htmlpreview.github.io/?https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/pit-raportti/201701081500/index.html)
