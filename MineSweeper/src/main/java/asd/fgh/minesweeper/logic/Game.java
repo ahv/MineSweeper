@@ -17,13 +17,12 @@ public class Game {
     private final Board board;
     private final GameSettings settings;
     private final StopWatch time;
-    private final UserInterface ui;
+    private UserInterface ui;
 
     /**
      * Constructor for custom games, values are validated internally in a
      * GameSettings object.
      *
-     * @param ui
      * @param mines Amount of mines in the game, between 1 and total amount of
      * grids.
      * @param width Width of the game board.
@@ -31,33 +30,35 @@ public class Game {
      *
      * @see asd.fgh.minesweeper.logic.GameSettings#GameSettings(int, int, int)
      */
-    public Game(UserInterface ui, int mines, int width, int height) {
-        this(ui, new GameSettings(mines, width, height));
+    public Game(int mines, int width, int height) {
+        this(new GameSettings(mines, width, height));
     }
 
     /**
      * Constructor for preset games, values defined in GameSettings class.
      *
-     * @param ui
      * @param difficulty Enum to identify a preset in GameSettings.
      *
      * @see
      * asd.fgh.minesweeper.logic.GameSettings#generatePreset(asd.fgh.minesweeper.logic.Difficulty)
      */
-    public Game(UserInterface ui, Difficulty difficulty) {
-        this(ui, GameSettings.generatePreset(difficulty));
+    public Game(Difficulty difficulty) {
+        this(GameSettings.generatePreset(difficulty));
     }
 
-    private Game(UserInterface ui, GameSettings s) {
+    private Game(GameSettings s) {
         this.settings = s;
         this.board = new Board(s.getMines(), s.getWidth(), s.getHeight());
         this.time = new StopWatch();
-        this.ui = ui;
     }
 
     // Used in building the UI
     public GameSettings getSettings() {
         return settings;
+    }
+
+    public void setUserInterface(UserInterface ui) {
+        this.ui = ui;
     }
 
     /**
@@ -113,10 +114,10 @@ public class Game {
             time.start();
         }
         if (listContainsMine(touched)) {
-            ui.handleEndedGame(new Score(settings.getDifficulty(), time.getElapsedTime()), false);
+            ui.handleEndedGame(new Score(settings.getDifficulty(), time.getElapsedTime()), settings, false);
         } else if (board.isCompletelyExplored()) {
             Score score = new Score(settings.getDifficulty(), time.getElapsedTime());
-            ui.handleEndedGame(score, true);
+            ui.handleEndedGame(score, settings, true);
         }
         ui.updateGridView(touched);
     }

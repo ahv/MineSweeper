@@ -1,6 +1,8 @@
 package asd.fgh.minesweeper.ui;
 
 import asd.fgh.minesweeper.logic.Difficulty;
+import asd.fgh.minesweeper.logic.Game;
+import asd.fgh.minesweeper.logic.GameSettings;
 import asd.fgh.minesweeper.persistence.Score;
 
 /**
@@ -25,6 +27,14 @@ public class Main {
         startFrame = new StartFrame(this);
     }
 
+    public void startGame(GameSettings settings) {
+        if (settings.getDifficulty() == null) {
+            startCustomGame(settings.getMines(), settings.getWidth(), settings.getHeight());
+        } else {
+            startGame(settings.getDifficulty());
+        }
+    }
+
     public void startGame(Difficulty difficulty) {
         startFrame.setVisible(false);
         if (gameFrame != null) {
@@ -33,12 +43,23 @@ public class Main {
         if (endFrame != null) {
             endFrame.dispose();
         }
-        this.gameFrame = new GameFrame(this, difficulty);
+        this.gameFrame = new GameFrame(this, new Game(difficulty));
     }
 
-    public void showEndScreen(Score result, boolean won) {
+    public void startCustomGame(int mines, int width, int height) {
+        startFrame.setVisible(false);
+        if (gameFrame != null) {
+            gameFrame.dispose();
+        }
+        if (endFrame != null) {
+            endFrame.dispose();
+        }
+        this.gameFrame = new GameFrame(this, new Game(mines, width, height));
+    }
+
+    public void showEndScreen(Score result, GameSettings previousSettings, boolean won) {
         gameFrame.setEnabled(false);
-        endFrame = new EndFrame(this, result, won);
+        endFrame = new EndFrame(this, previousSettings, result, won);
     }
 
     public void showStartFrame() {

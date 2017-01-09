@@ -1,6 +1,6 @@
 package asd.fgh.minesweeper.ui;
 
-import asd.fgh.minesweeper.ui.component.GameGrid;
+import asd.fgh.minesweeper.ui.component.FrameGrid;
 import asd.fgh.minesweeper.logic.Difficulty;
 import asd.fgh.minesweeper.logic.Game;
 import asd.fgh.minesweeper.logic.GameSettings;
@@ -28,12 +28,12 @@ import javax.swing.BoxLayout;
 public class GameFrame extends Frame implements UserInterface {
 
     private final Game game;
-    private final GameGrid[][] grid;
+    private final FrameGrid[][] grid;
     private final Label timeLabel;
     private final Label mineLabel;
     private final Main main;
-
-    public GameFrame(Main main, Difficulty difficulty) throws HeadlessException {
+    
+    public GameFrame(Main main, Game game) throws HeadlessException {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -44,7 +44,8 @@ public class GameFrame extends Frame implements UserInterface {
         setFont(new Font("Arial", Font.BOLD, 16));
 
         this.main = main;
-        this.game = new Game(this, difficulty);
+        this.game = game;
+        game.setUserInterface(this);
         GameSettings s = game.getSettings();
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -60,12 +61,12 @@ public class GameFrame extends Frame implements UserInterface {
         int h = s.getHeight();
         Panel minePanel = new Panel(new GridLayout(h, w, 1, 1));
         minePanel.setBackground(Color.GRAY);
-        this.grid = new GameGrid[w][h];
+        this.grid = new FrameGrid[w][h];
         int x, y;
         for (int i = 0; i < w * h; i++) {
             x = i % w;
             y = i / w;
-            GameGrid g = new GameGrid(this, game, x, y);
+            FrameGrid g = new FrameGrid(this, game, x, y);
             this.grid[x][y] = g;
             minePanel.add(g);
         }
@@ -94,7 +95,7 @@ public class GameFrame extends Frame implements UserInterface {
     }
     
     @Override
-    public void handleEndedGame(Score score, boolean won) {
-        main.showEndScreen(score, won);
+    public void handleEndedGame(Score score, GameSettings previousSettings, boolean won) {
+        main.showEndScreen(score, previousSettings, won);
     }
 }

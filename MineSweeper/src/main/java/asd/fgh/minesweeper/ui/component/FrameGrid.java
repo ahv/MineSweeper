@@ -11,12 +11,12 @@ import java.awt.Panel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class GameGrid extends Panel {
+public class FrameGrid extends Panel {
 
     private final Button b;
     private final Label l;
 
-    public GameGrid(GameFrame frame, Game game, int x, int y) {
+    public FrameGrid(GameFrame frame, Game game, int x, int y) {
         setLayout(new GridLayout());
         setBackground(Color.LIGHT_GRAY);
         b = new Button();
@@ -37,7 +37,7 @@ public class GameGrid extends Panel {
         l.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent me) {
-                if (me.getButton() == MouseEvent.BUTTON2) {
+                if (me.getButton() == MouseEvent.BUTTON3) {
                     game.openAdjacentsAt(x, y);
                 }
             }
@@ -64,6 +64,6 @@ public class GameGrid extends Panel {
             l.setBackground(Color.RED);
         }
         l.setText(GridState.stateToSymbol(state) + "");
-
+        l.setForeground(GridState.stateToColor(state));
     }
 }

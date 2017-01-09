@@ -4,8 +4,10 @@ import asd.fgh.minesweeper.logic.Difficulty;
 import java.awt.Button;
 import java.awt.FlowLayout;
 import java.awt.Frame;
+import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.Panel;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -21,7 +23,7 @@ public class StartFrame extends Frame {
                 System.exit(0);
             }
         });
-        setTitle("Mine Sweeper");
+        setTitle("Minesweeper");
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Panel titlePanel = new Panel(new FlowLayout());
         add(titlePanel);
@@ -56,7 +58,30 @@ public class StartFrame extends Frame {
         add(newIntermediateGameButton);
         add(newAdvancedGameButton);
         
-        setSize(200, 200);
+        Panel customGamePanel = new Panel(new GridLayout(3, 2));
+        customGamePanel.add(new Label("Width:"));
+        TextField width = new TextField("10");
+        customGamePanel.add(width);
+        customGamePanel.add(new Label("Height:"));
+        TextField height = new TextField("10");
+        customGamePanel.add(height);
+        customGamePanel.add(new Label("Mines:"));
+        TextField mines = new TextField("10");
+        customGamePanel.add(mines);
+        Button custom = new Button("Custom");
+        custom.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                int m = Integer.parseInt(mines.getText());
+                int w = Integer.parseInt(width.getText());
+                int h = Integer.parseInt(height.getText());
+                main.startCustomGame(m,w,h);
+            }
+        });
+        add(customGamePanel);
+        add(custom);
+        
+        setSize(200, 250);
         setResizable(false);
         setLocationRelativeTo(null);
     }
