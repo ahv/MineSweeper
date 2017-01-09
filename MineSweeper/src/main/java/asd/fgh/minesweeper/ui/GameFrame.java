@@ -4,6 +4,9 @@ import asd.fgh.minesweeper.ui.component.GameGrid;
 import asd.fgh.minesweeper.logic.Difficulty;
 import asd.fgh.minesweeper.logic.Game;
 import asd.fgh.minesweeper.logic.GameSettings;
+import asd.fgh.minesweeper.logic.UserInterface;
+import asd.fgh.minesweeper.logic.data.Grid;
+import asd.fgh.minesweeper.persistence.Score;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -14,6 +17,7 @@ import java.awt.Label;
 import java.awt.Panel;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import javax.swing.BoxLayout;
 
 /**
@@ -21,7 +25,7 @@ import javax.swing.BoxLayout;
  *
  * @author ahv
  */
-public class GameFrame extends Frame {
+public class GameFrame extends Frame implements UserInterface {
 
     private final Game game;
     private final GameGrid[][] grid;
@@ -40,7 +44,7 @@ public class GameFrame extends Frame {
         setFont(new Font("Arial", Font.BOLD, 16));
 
         this.main = main;
-        this.game = new Game(difficulty);
+        this.game = new Game(this, difficulty);
         GameSettings s = game.getSettings();
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -72,31 +76,33 @@ public class GameFrame extends Frame {
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);
+        
+        //game.start();
     }
 
-    // TODO: Sketchy method
-    /**
-     * Gets a snapshot from the game object and updates the look accordingly.
-     *
-     */
-    public void updateView() {
-        if (game.hasEnded()) {
-            handleGameEnd(); // TODO: Show entire board on end
+
+    @Override
+    public void updateGridView(ArrayList<Grid> changedGrids) {
+        for (Grid g : changedGrids){
+            grid[g.getX()][g.getY()].setVisualState(g.getState());
         }
-        int[][] snap = game.getBoardSnapshot();
-        for (int x = 0; x < snap.length; x++) {
-            for (int y = 0; y < snap[0].length; y++) {
-                this.grid[x][y].setVisualState(snap[x][y]);
-            }
-        }
-        // TODO: This should update "live"
-        this.timeLabel.setText("Time: " + game.getElapsedTime());
         validate();
         repaint();
     }
 
-    // TODO: UI is handling score logic, tsk tsk
-    private void handleGameEnd() {
-        main.showEndScreen(game.getFinalScore());
+    @Override
+    public void updateElapsedTime(int elapsedTime) {
+        this.timeLabel.setText("Time: " + elapsedTime);
+    }
+
+    @Override
+    public String enterNameForHighScore() {
+        // TODO: Spawn a dialog box of some flavor
+        return "MockName";
+    }
+
+    @Override
+    public void handleEndedGame(Score score) {
+        // TODO:
     }
 }

@@ -41,7 +41,7 @@ public class Board {
         for (int i = 0; i < width * height; i++) {
             int x = i % width;
             int y = i / width;
-            grid[x][y] = new Grid(x, y, m.isMined(x, y), m.minedNeighbours(x, y));
+            grid[x][y] = new Grid(this, x, y, m.isMined(x, y), m.minedNeighbours(x, y));
         }
     }
 
@@ -53,14 +53,7 @@ public class Board {
         return height;
     }
 
-    /**
-     * Check if given coordinates are within the boundaries of the Board.
-     *
-     * @param x X-coordinate.
-     * @param y Y-coordinate.
-     * @return True if given coordinates are within the boundaries.
-     */
-    public boolean coordinatesAreInBoundary(int x, int y) {
+    boolean isInBoardBoundary(int x, int y) {
         return (x >= 0 && x < width && y >= 0 && y < height);
     }
 
@@ -71,7 +64,7 @@ public class Board {
      *
      * @return True if essentially win condition has been met.
      */
-    public boolean isCompletelyExplored() {
+    public boolean isCompletelyExplored() { // TODO: Simplify (track values internally)
         int revealed = 0;
         for (int i = 0; i < width * height; i++) {
             int x = i % width;
@@ -93,51 +86,28 @@ public class Board {
      * @param y Y-coordinate.
      * @return Returns true if mine was hit.
      */
-    public boolean openGridAt(int x, int y) {
-        if (!coordinatesAreInBoundary(x, y)) {
-            return false;
+    public ArrayList<Grid> openGridAt(int x, int y) {
+        ArrayList<Grid> touched = new ArrayList<>();
+        if (!isInBoardBoundary(x, y)) {
+            return touched;
         }
-        // Skip recursion when hitting a mine or grid is touching a mine.
-        if (grid[x][y].isMined()) {
-            grid[x][y].reveal();
-            return true;
-
-        } else if (grid[x][y].touchedMines() != 0) {
-            grid[x][y].reveal();
-            return false;
-        }
-        // Recursive opening
-        ArrayList<Grid> openable = new ArrayList<>();
-        openable.add(grid[x][y]);
-        populateOpenableRecursively(x, y, openable);
-        for (Grid g : openable) {
-            g.reveal();
-        }
-        return false;
+        Grid g = gridAt(x, y);
+        g.open(touched);
+        return touched;
     }
 
-    // TODO: What these methods in this class provide could actually be better implemented in Grid class.
-    // -- especially if a grid knows about its neighbours!
-    // This helper method is only used above, it populates an array of grids to open.
-    private ArrayList<Grid> populateOpenableRecursively(int x, int y, ArrayList<Grid> added) {
-        for (Grid g : neighbourGrids(x, y)) {
-            if (g == null || added.contains(g) || g.isRevealed() || g.isFlagged()) {
-                continue;
-            }
-            added.add(g);
-            if (g.touchedMines() == 0) {
-                populateOpenableRecursively(g.getX(), g.getY(), added);
-            }
+    /**
+     * Flips a flag in grid.
+     *
+     * @param x x-coordinate.
+     * @param y y-coordinate.
+     * @return
+     */
+    public Grid flipFlag(int x, int y) {
+        if (isInBoardBoundary(x, y)) {
+            grid[x][y].flipFlag();
         }
-        return added;
-    }
-
-    // TODO: Drops nulls in the array.
-    private Grid[] neighbourGrids(int x, int y) {
-        //if (!coordinatesAreInBoundary(x, y)) return empty;
-        Grid[] neighbours = new Grid[]{gridAt(x - 1, y - 1), gridAt(x, y - 1), gridAt(x + 1, y - 1), gridAt(x - 1, y),
-            gridAt(x + 1, y), gridAt(x - 1, y + 1), gridAt(x, y + 1), gridAt(x + 1, y + 1)};
-        return neighbours;
+        return grid[x][y];
     }
 
     /**
@@ -147,107 +117,39 @@ public class Board {
      * @param y Y-coordinate.
      * @return True if a mine was hit.
      */
-    public boolean openAdjacentsAt(int x, int y) {
-        boolean hitMine = false;
-        if (!coordinatesAreInBoundary(x, y)) {
-            return false;
+    public ArrayList<Grid> openAdjacentsAt(int x, int y) {
+        ArrayList<Grid> touched = new ArrayList<>();
+        if (!isInBoardBoundary(x, y)) {
+            return touched;
         }
-        for (Grid g : neighbourGrids(x, y)) {
-            if (g != null && !g.isFlagged()) {
-                if (openGridAt(g.getX(), g.getY())) {
-                    hitMine = true;
-                }
+        if (gridAt(x, y).flaggedNeighboursMatchMinedNeighbours()){
+            for (Grid g : neighbourGrids(x, y)){
+                g.open(touched);
             }
         }
-        return hitMine;
+        return touched;
+    }
+
+    // TODO: A little dirty looking.
+    ArrayList<Grid> neighbourGrids(int x, int y) {
+        ArrayList<Grid> neighbours = new ArrayList<>();
+        if (!isInBoardBoundary(x, y)) {
+            return neighbours;
+        }
+        Grid[] ns = new Grid[]{gridAt(x - 1, y - 1), gridAt(x, y - 1), gridAt(x + 1, y - 1), gridAt(x - 1, y),
+            gridAt(x + 1, y), gridAt(x - 1, y + 1), gridAt(x, y + 1), gridAt(x + 1, y + 1)};
+        for (Grid g : ns) {
+            if (g != null) {
+                neighbours.add(g);
+            }
+        }
+        return neighbours;
     }
 
     private Grid gridAt(int x, int y) {
-        if (coordinatesAreInBoundary(x, y)) {
+        if (isInBoardBoundary(x, y)) {
             return grid[x][y];
         }
         return null;
-    }
-
-    // TODO: These methods that just pass through seem wrong, maybe they just smell funny?
-    /**
-     * Flips a flag in grid.
-     * @param x x-coordinate.
-     * @param y y-coordinate.
-     */
-    public void flipFlag(int x, int y) {
-        if (coordinatesAreInBoundary(x, y)) {
-            grid[x][y].flipFlag();
-        }
-    }
-
-    /**
-     * Check if grid is mined.
-     * @param x x-coordinate.
-     * @param y y-coordinate.
-     * @return True if grid has mine.
-     */
-    public boolean isMined(int x, int y) {
-        if (coordinatesAreInBoundary(x, y)) {
-            return grid[x][y].isMined();
-        }
-        return false;
-    }
-
-    /**
-     * Check if grid has been revealed.
-     * @param x x-coordinate.
-     * @param y y-coordinate.
-     * @return True if grid is revealed.
-     */
-    public boolean isRevealed(int x, int y) {
-        if (coordinatesAreInBoundary(x, y)) {
-            return grid[x][y].isRevealed();
-        }
-        return false;
-    }
-
-    /**
-     * Check if grid is flagged.
-     * @param x x-coordinate.
-     * @param y y-coordinate.
-     * @return True if grid is flagged.
-     */
-    public boolean isFlagged(int x, int y) {
-        if (coordinatesAreInBoundary(x, y)) {
-            return grid[x][y].isFlagged();
-        }
-        return false;
-    }
-    
-    /**
-     * Count how many mines the specified grid is touching.
-     * @param x x-coordinate.
-     * @param y y-coordinate.
-     * @return Touched mines count.
-     */
-    public int touchedMinesAt(int x, int y) {
-        if (coordinatesAreInBoundary(x, y)) {
-            return grid[x][y].touchedMines();
-        }
-        return 0;
-    }
-
-    /**
-     * Count how many flags the specified grid is touching.
-     * @param x x-coordinate.
-     * @param y y-coordinate.
-     * @return Touched flags count.
-     */
-    public int touchedFlagsAt(int x, int y) {
-        int flags = 0;
-        if (coordinatesAreInBoundary(x, y)) {
-            for (Grid g : neighbourGrids(x, y)) {
-                if (g != null && g.isFlagged()) {
-                    flags++;
-                }
-            }
-        }
-        return flags;
     }
 }

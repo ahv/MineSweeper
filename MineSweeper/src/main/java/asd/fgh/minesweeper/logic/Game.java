@@ -1,11 +1,13 @@
 package asd.fgh.minesweeper.logic;
 
 import asd.fgh.minesweeper.logic.data.Board;
-import asd.fgh.minesweeper.persistence.Score;
+import asd.fgh.minesweeper.logic.data.Grid;
+import asd.fgh.minesweeper.logic.data.GridState;
+import java.util.ArrayList;
 
 /**
- * The UI facing class; has the required methods for playing the game,
- * generates the board internally, knows if the game is over, produces a final score.
+ * The UI facing class; has the required methods for playing the game, generates
+ * the board internally, knows if the game is over, produces a final score.
  *
  * @author ahv
  */
@@ -15,11 +17,13 @@ public class Game {
     private final Board board;
     private final GameSettings settings;
     private final StopWatch time;
+    private final UserInterface ui;
 
     /**
      * Constructor for custom games, values are validated internally in a
      * GameSettings object.
      *
+     * @param ui
      * @param mines Amount of mines in the game, between 1 and total amount of
      * grids.
      * @param width Width of the game board.
@@ -27,45 +31,44 @@ public class Game {
      *
      * @see asd.fgh.minesweeper.logic.GameSettings#GameSettings(int, int, int)
      */
-    public Game(int mines, int width, int height) {
-        this(new GameSettings(mines, width, height));
+    public Game(UserInterface ui, int mines, int width, int height) {
+        this(ui, new GameSettings(mines, width, height));
     }
 
     /**
      * Constructor for preset games, values defined in GameSettings class.
      *
+     * @param ui
      * @param difficulty Enum to identify a preset in GameSettings.
      *
      * @see
      * asd.fgh.minesweeper.logic.GameSettings#generatePreset(asd.fgh.minesweeper.logic.Difficulty)
      */
-    public Game(Difficulty difficulty) {
-        this(GameSettings.generatePreset(difficulty));
+    public Game(UserInterface ui, Difficulty difficulty) {
+        this(ui, GameSettings.generatePreset(difficulty));
     }
 
-    private Game(GameSettings s) {
+    private Game(UserInterface ui, GameSettings s) {
         this.settings = s;
         this.state = GameState.READY;
         this.board = new Board(s.getMines(), s.getWidth(), s.getHeight());
         this.time = new StopWatch();
+        this.ui = ui;
     }
 
+    public void start() {
+        while (!hasEnded()) {
+            ui.updateElapsedTime(time.getElapsedTime()); // TODO: Unnecessarily spammy loop
+        }
+    }
+
+    // Used in building the UI
     public GameSettings getSettings() {
         return settings;
     }
 
-    /**
-     * Check to see if the game is no longer in progress; a win or loss
-     * condition has been reached.
-     *
-     * @return Returns true if no more game-play input will be handled.
-     */
-    public boolean hasEnded() {
+    boolean hasEnded() {
         return (this.state == GameState.LOST || this.state == GameState.WON);
-    }
-
-    public boolean isWon() {
-        return (state == GameState.WON);
     }
 
     /**
@@ -73,19 +76,14 @@ public class Game {
      *
      * @param x X-coordinate.
      * @param y Y-coordinate.
-     * @return True if opening a grid succeeded. Will return false when the grid
-     * is flagged or game is over.
      */
-    public boolean openGridAt(int x, int y) {
-        if (!preCheck() || board.isFlagged(x, y)) {
-            return false;
+    public void openGridAt(int x, int y) {
+        if (!preCheck()) {
+            return;
         }
-        if (board.openGridAt(x, y)) { // if hit mine
-            endGame(GameState.LOST);
-        } else if (board.isCompletelyExplored()) {
-            endGame(GameState.WON);
-        }
-        return true;
+        ArrayList<Grid> touched = board.openGridAt(x, y);
+        containsMine(touched);
+        ui.updateGridView(touched);
     }
 
     /**
@@ -93,14 +91,15 @@ public class Game {
      *
      * @param x X-coordinate.
      * @param y Y-coordinate.
-     * @return Returns true if flagging/unflagging was successful.
      */
-    public boolean flagGridAt(int x, int y) {
-        if (preCheck() && !board.isRevealed(x, y)) {
-            board.flipFlag(x, y);
-            return true;
+    public void flagGridAt(int x, int y) {
+        if (preCheck()) {
+            Grid g = board.flipFlag(x, y);
+            // TODO: Overkill... a whole
+            ArrayList<Grid> l = new ArrayList<>();
+            l.add(g);
+            ui.updateGridView(l);
         }
-        return false;
     }
 
     /**
@@ -112,16 +111,9 @@ public class Game {
      * @param y Y-coordinate.
      */
     public void openAdjacentsAt(int x, int y) {
-        if (!preCheck() || !board.isRevealed(x, y)) {
-            return;
-        }
-        if (board.touchedFlagsAt(x, y) == board.touchedMinesAt(x, y)) {
-            if (board.openAdjacentsAt(x, y)) { // if mine was hit
-                endGame(GameState.LOST);
-            } else if (board.isCompletelyExplored()) {
-                endGame(GameState.WON);
-            }
-        }
+        ArrayList<Grid> touched = board.openAdjacentsAt(x, y);
+        containsMine(touched);
+        ui.updateGridView(touched);
     }
 
     private boolean preCheck() {
@@ -138,55 +130,12 @@ public class Game {
         time.stop();
     }
 
-    /**
-     * Get seconds since first move, up until game end.
-     * @return Elapsed game time in seconds.
-     */
-    public int getElapsedTime() {
-        if (state == GameState.READY) {
-            return 0;
-        }
-        return time.getElapsedTime();
-    }
-
-    // TODO: Shouldn't be called while the game is still going.
-    // Maybe instead of returning null, return some sort of invalid score?
-    /**
-     * Produces final score of the game.
-     * @return Returns null if the game hasn't finished, otherwise a score object.
-     */
-    public Score getFinalScore() {
-        if (hasEnded()) {
-            return new Score(settings.getDifficulty(), time.getElapsedTime(), this.isWon());
-        } else {
-            return null;
-        }
-    }
-
-    // TODO: Makeshift thing for UI, could use a rework
-    /**
-     * Generates an int code based snapshot of the current visible state of the
-     * board. The integers represent states as follows: -2 flagged, -1
-     * unrevealed, 0..8 touching x amount of mines, 9 mine
-     *
-     * @return A snapshot of the current visible game state.
-     */
-    public int[][] getBoardSnapshot() {
-        int[][] snap = new int[board.getWidth()][board.getHeight()];
-        for (int x = 0; x < board.getWidth(); x++) {
-            for (int y = 0; y < board.getHeight(); y++) {
-                if (board.isFlagged(x, y)) {
-                    snap[x][y] = -2;
-                } else if (!board.isRevealed(x, y)) {
-                    snap[x][y] = -1;
-                } else if (board.isMined(x, y)) {
-                    snap[x][y] = 9;
-                } else {
-                    snap[x][y] = board.touchedMinesAt(x, y);
-                }
-
+    private boolean containsMine(ArrayList<Grid> list) {
+        for (Grid g : list) {
+            if (g.getState() == GridState.MINED) {
+                return true;
             }
         }
-        return snap;
+        return false;
     }
 }
