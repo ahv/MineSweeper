@@ -3,7 +3,6 @@ package asd.fgh.minesweeper.logic;
 import asd.fgh.minesweeper.logic.data.Board;
 import asd.fgh.minesweeper.logic.data.Grid;
 import asd.fgh.minesweeper.logic.data.GridState;
-import asd.fgh.minesweeper.persistence.HighScores;
 import asd.fgh.minesweeper.persistence.Score;
 import java.util.ArrayList;
 
