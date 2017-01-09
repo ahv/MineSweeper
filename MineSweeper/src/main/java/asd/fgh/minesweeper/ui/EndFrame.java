@@ -16,19 +16,15 @@ public class EndFrame extends Frame {
 
     private final Main main;
 
-    public EndFrame(Main main, Score score) {
+    public EndFrame(Main main, Score score, boolean won) {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 System.exit(0);
             }
         });
+        setTitle((won ? "WON - ": "LOST - ") + score.getDifficulty() + " - " + score.getTime() + " seconds");
         this.main = main;
-        if (score.isWon()) {
-            setTitle("You won!");
-        } else {
-            setTitle("You lost...");
-        }
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         add(new Label("Highscores", Label.CENTER));
         add(new Label("Beginner:"));

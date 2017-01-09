@@ -3,6 +3,8 @@ package asd.fgh.minesweeper.logic;
 import asd.fgh.minesweeper.logic.data.Board;
 import asd.fgh.minesweeper.logic.data.Grid;
 import asd.fgh.minesweeper.logic.data.GridState;
+import asd.fgh.minesweeper.persistence.HighScores;
+import asd.fgh.minesweeper.persistence.Score;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +15,6 @@ import java.util.ArrayList;
  */
 public class Game {
 
-    private GameState state;
     private final Board board;
     private final GameSettings settings;
     private final StopWatch time;
@@ -50,25 +51,14 @@ public class Game {
 
     private Game(UserInterface ui, GameSettings s) {
         this.settings = s;
-        this.state = GameState.READY;
         this.board = new Board(s.getMines(), s.getWidth(), s.getHeight());
         this.time = new StopWatch();
         this.ui = ui;
     }
 
-    public void start() {
-        while (!hasEnded()) {
-            ui.updateElapsedTime(time.getElapsedTime()); // TODO: Unnecessarily spammy loop
-        }
-    }
-
     // Used in building the UI
     public GameSettings getSettings() {
         return settings;
-    }
-
-    boolean hasEnded() {
-        return (this.state == GameState.LOST || this.state == GameState.WON);
     }
 
     /**
@@ -78,12 +68,10 @@ public class Game {
      * @param y Y-coordinate.
      */
     public void openGridAt(int x, int y) {
-        if (!preCheck()) {
-            return;
+        if (!time.isRunning()) {
+            time.start();
         }
-        ArrayList<Grid> touched = board.openGridAt(x, y);
-        containsMine(touched);
-        ui.updateGridView(touched);
+        handleMoveResult(board.openGridAt(x, y));
     }
 
     /**
@@ -93,13 +81,11 @@ public class Game {
      * @param y Y-coordinate.
      */
     public void flagGridAt(int x, int y) {
-        if (preCheck()) {
-            Grid g = board.flipFlag(x, y);
-            // TODO: Overkill... a whole
-            ArrayList<Grid> l = new ArrayList<>();
-            l.add(g);
-            ui.updateGridView(l);
-        }
+        Grid g = board.flipFlag(x, y);
+        // TODO: Overkill... a whole list for one element
+        ArrayList<Grid> l = new ArrayList<>();
+        l.add(g);
+        ui.updateGridView(l);
     }
 
     /**
@@ -111,31 +97,28 @@ public class Game {
      * @param y Y-coordinate.
      */
     public void openAdjacentsAt(int x, int y) {
-        ArrayList<Grid> touched = board.openAdjacentsAt(x, y);
-        containsMine(touched);
-        ui.updateGridView(touched);
+        handleMoveResult(board.openAdjacentsAt(x, y));
     }
 
-    private boolean preCheck() {
-        // Starts clock on first action.
-        if (state == GameState.READY) {
-            this.time.start();
-            this.state = GameState.RUNNING;
-        }
-        return !hasEnded();
-    }
-
-    private void endGame(GameState result) {
-        state = result;
-        time.stop();
-    }
-
-    private boolean containsMine(ArrayList<Grid> list) {
+    private boolean listContainsMine(ArrayList<Grid> list) {
         for (Grid g : list) {
             if (g.getState() == GridState.MINED) {
                 return true;
             }
         }
         return false;
+    }
+
+    private void handleMoveResult(ArrayList<Grid> touched) {
+        if (!time.isRunning()) {
+            time.start();
+        }
+        if (listContainsMine(touched)) {
+            ui.handleEndedGame(new Score(settings.getDifficulty(), time.getElapsedTime()), false);
+        } else if (board.isCompletelyExplored()) {
+            Score score = new Score(settings.getDifficulty(), time.getElapsedTime());
+            ui.handleEndedGame(score, true);
+        }
+        ui.updateGridView(touched);
     }
 }

@@ -36,8 +36,9 @@ public class Main {
         this.gameFrame = new GameFrame(this, difficulty);
     }
 
-    public void showEndScreen(Score result) {
-        endFrame = new EndFrame(this, result);
+    public void showEndScreen(Score result, boolean won) {
+        gameFrame.setEnabled(false);
+        endFrame = new EndFrame(this, result, won);
     }
 
     public void showStartFrame() {

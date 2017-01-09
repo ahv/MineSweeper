@@ -69,7 +69,6 @@ public class GameFrame extends Frame implements UserInterface {
             this.grid[x][y] = g;
             minePanel.add(g);
         }
-        //minePanel.setSize(40 * w, 40 * h);
         add(minePanel);
 
         setSize(32 * w, 40 * h + 20);
@@ -77,7 +76,6 @@ public class GameFrame extends Frame implements UserInterface {
         setResizable(false);
         setVisible(true);
         
-        //game.start();
     }
 
 
@@ -92,17 +90,11 @@ public class GameFrame extends Frame implements UserInterface {
 
     @Override
     public void updateElapsedTime(int elapsedTime) {
-        this.timeLabel.setText("Time: " + elapsedTime);
+        timeLabel.setText("Time: " + elapsedTime);
     }
-
+    
     @Override
-    public String enterNameForHighScore() {
-        // TODO: Spawn a dialog box of some flavor
-        return "MockName";
-    }
-
-    @Override
-    public void handleEndedGame(Score score) {
-        // TODO:
+    public void handleEndedGame(Score score, boolean won) {
+        main.showEndScreen(score, won);
     }
 }

@@ -8,6 +8,5 @@ import java.util.ArrayList;
 public interface UserInterface {
     void updateElapsedTime(int elapsedTime);
     void updateGridView(ArrayList<Grid> changedGrids);
-    String enterNameForHighScore();
-    void handleEndedGame(Score score);
+    void handleEndedGame(Score score, boolean wasVictory);
 }

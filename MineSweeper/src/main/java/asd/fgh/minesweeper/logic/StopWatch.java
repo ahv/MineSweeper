@@ -27,6 +27,10 @@ public class StopWatch {
         running = false;
     }
 
+    public boolean isRunning() {
+        return running;
+    }
+
     /**
      * Gives the elapsed time since first move in seconds.
      *
