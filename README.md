@@ -1,7 +1,9 @@
 # MineSweeper
-Klooni microsoftin omasta käyttöjärjestelmien mukana tulevasta miinaharavasta.
+(Lähes-)Klooni microsoftin omasta käyttöjärjestelmien mukana tulevasta miinaharavasta.
 
 ##Dokumentaatio
+[Käyttöohje)(https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/kaytto-ohje.md)
+
 [Aiheen kuvaus](https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/aiheenKuvausJaRakenne.md)
 
 [Tuntikirjanpito](https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/tuntikirjanpito.md)
