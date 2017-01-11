@@ -2,7 +2,8 @@
 (Lähes-)Klooni microsoftin omasta käyttöjärjestelmien mukana tulevasta miinaharavasta.
 
 ##Dokumentaatio
-[Käyttöohje)(https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/kaytto-ohje.md)
+
+[Käyttöohje](https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/kaytto-ohje.md)
 
 [Aiheen kuvaus](https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/aiheenKuvausJaRakenne.md)
 
