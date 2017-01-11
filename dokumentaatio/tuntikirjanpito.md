@@ -7,4 +7,5 @@ Päivä | Tunnit | Kuvaus
 4.1.2017 | 16h | Deadline 3 & 4 + käyttöliittymää laajemmin, aihemäärittelyn tarkennus.
 8.1.2017 | 16h | Karmeeta koodia, mutta demokunto. Palautuksen kriteerit. Koodikatselmukset.
 9.1.2017 | 2h | Game, Board ja Grid luokkien uudelleensuunnittelu, käyttöliittymään vähän väriä.
+11.1.2017 | 3h | Panikointia.
 ... | ... | ...
