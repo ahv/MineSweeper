@@ -18,6 +18,17 @@ Pelaaja.
 - Ruudun merkkaus
 - Huippupisteiden katselu
 
+**Rakennekuvaus:**
+Game luokka pelin kannalta keskeisin - edustaa yhtä miinaharavakierrosta (siis yhtä lautaa). Voidaan luoda kahdenlaisia pelejä: mukautettuja (omilla asetuksilla) tai jokin kolmesta esimääritellystä vaikeusasteesta. Mukautettujen asetusten validointi ja esimääritellyt asetukset löytyy GameSettings oliosta, joka luodaan Game-luokan konstruktorissa sisäisesti. GameSettingsin voi kuitenkin getata Game instanssista, koska siitä saa hyödyllistä tietoa käyttöliittymää varten (kentän leveys, korkeus, miinojen määrä). Game-instanssiin täytyy ennen pelaamisen aloittamista setUserInterfacella liittää jokin luokka joka toteuttaa UserInterface-rajapinnan.
+
+Board ja Grid toimivat Game-luokassa pääasiassa sisäisesti, ne päivittävät pelin tilaa kun käyttöliittymältä tulee komentoja Game-instanssille - jokaisen pelaajan tekemän siirron jälkeen kuitenkin Board-instanssista palautuu lista Grid-referenssejä Gamelle, joka sitten kutsuu UserInterface-rajapinnan lupaamaa näkymän päivitysmetodia käyttöliittymässä ja passaa tämän listan käyttöliittymälle (näin ei koko näkymää tarvitse joka siirron jälkeen päivittää, vaan pelkästään ne ruudut jotka ovat muuttuneet). Käyttöliittymä ei voi muuttaa itse Grid-olioiden sisäistä tilaa näiden tietoa muokkaavien metodien näkyvyysrajoitteiden vuoksi.
+
+- MineMapia käytetään Board luokan konstruktorissa sisäisesti eriyttämään laudan rakennuslogiikkaa itse laudan tilasta.
+- StopWatch on Game luokan sisäinen pelin kestoa edustava luokka.
+
+Game luokka tunnistaa kun peli päättyy ja tässä tapauksessa kutsuu käyttöliittymän pelin lopettavaa metodia. Käyttöliittymän vastuulla on estää uusien siirtojen teko pelin päätyttyä.
+
+
 **Luokkakaavio:**
 
 
