@@ -1,5 +1,5 @@
 **Aihe:**
-Miinaharava. Klooni microsoftin omasta käyttöjärjestelmien mukana tulevasta pelistä. Peliä pelataan logiikkaa ohjailevan ikkunan kautta - pitkälti samaan tapaan kuin perinteisessä miinaharavassakin: ikkunassa on ruudukko painikkeita, jotka edustavat ruutuja. Ruutuja voidaan avata tai merkitä lipulla. Jos ruudukkoon piilotettu miina avataan häviää pelin. Jos ruudukon avaamattomien ruutujen määrä täsmää ennalta määrättyyn miinojen määrään (joka kerrotaan pelaajalle käyttöliittymässä pelin aikana) niin katsotaan pelaajan tietävän missä kaikki miinat sijaitsevat, eli miinat on haravoitu ja pelaaja voittaa pelin. Nopeasta suorituksesta saa paremmat pisteet.
+Miinaharava. Lähes klooni Microsoftin omasta käyttöjärjestelmien mukana tulevasta pelistä. Peliä pelataan logiikkaa ohjailevan ikkunan kautta - pitkälti samaan tapaan kuin perinteisessä miinaharavassakin: ikkunassa on ruudukko painikkeita, jotka edustavat ruutuja. Ruutuja voidaan avata tai merkitä lipulla. Jos ruudukkoon piilotettu miina avataan häviää pelin. Jos ruudukon avaamattomien ruutujen määrä täsmää ennalta määrättyyn miinojen määrään (joka kerrotaan pelaajalle käyttöliittymässä pelin aikana) niin katsotaan pelaajan tietävän missä kaikki miinat sijaitsevat, eli miinat on haravoitu ja pelaaja voittaa pelin. Nopeasta suorituksesta saa paremmat pisteet.
 
 Miinojen sijaintia voi arvioida avatuista ruuduista saadun tiedon perusteella: jokainen miinoittamaton ruutu kertoo kuinka montaa miinaa se koskettaa, jos yhtään. Jos avataan ruutu joka ei kosketa ainuttakaan miinaa, avaa peli möys viereiset ruudut automaattisesti (ja niiden viereiset jos ei niistäkään löydy miinoja, rekursiivisesti).
 
@@ -31,11 +31,12 @@ Game luokka tunnistaa kun peli päättyy ja tässä tapauksessa kutsuu käyttöl
 
 **Luokkakaavio:**
 
-
 ![Luokkakaavio](https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/MineSweeperClassDiagram.png)
 
 
 **Sekvenssikaaviot:**
+
+(HUOM! Eivät vastaa todellisuutta tällä hetkellä, koodin rakenne muutettu äskettäin huomattavasti... uudet sekvenssikaaviot tulossa)
 
 ![Sekvenssikaavio1](https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/SequenceDiagram1.png)
 
