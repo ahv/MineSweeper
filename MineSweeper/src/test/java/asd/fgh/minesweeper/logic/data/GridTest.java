@@ -10,7 +10,7 @@ public class GridTest {
     
     @Before
     public void setUp(){
-        g = new Grid(0,0,true,0);
+        g = new Grid(null, 0, 0, true, 0);
     }
     
     @Test

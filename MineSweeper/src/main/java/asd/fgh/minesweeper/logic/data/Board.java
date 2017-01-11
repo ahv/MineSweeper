@@ -6,8 +6,9 @@ import java.util.ArrayList;
  * Holds a reference to each Grid on the board and has methods to manipulate and
  * inspect them. This class is the only public class in
  * asd.fgh.minesweeper.logic.data and is used internally in an instance of a
- * Game. This class is aspiring to be the data, while the Game class handles the
- * logic (although currently the dichotomy is pretty hazy).
+ * Game. The board state manipulating methods return array lists that hold
+ * references to each changed Grid - so their visual representation can be
+ * changed in an user interface.
  *
  * To separate Board creation logic and the generated data itself this class
  * uses a MineMap instance internally during its construction to abstract away
@@ -78,13 +79,13 @@ public class Board {
     }
 
     /**
-     * Opens a grid at coordinates. If the opened grid touches no mines, will
-     * also recursively open adjacent grids until the edges of the unmined
-     * "island" have been found.
+     * Opens a grid at coordinates. If the opened grid touches no mines, Grid
+     * class also recursively opens adjacent grids until the edges of the
+     * unmined "island" have been found.
      *
      * @param x X-coordinate.
      * @param y Y-coordinate.
-     * @return Returns true if mine was hit.
+     * @return Returns a list of references to each changed grid.
      */
     public ArrayList<Grid> openGridAt(int x, int y) {
         ArrayList<Grid> touched = new ArrayList<>();
@@ -101,7 +102,7 @@ public class Board {
      *
      * @param x x-coordinate.
      * @param y y-coordinate.
-     * @return
+     * @return Reference to affected grid.
      */
     public Grid flipFlag(int x, int y) {
         if (isInBoardBoundary(x, y)) {
@@ -111,19 +112,20 @@ public class Board {
     }
 
     /**
-     * Opens all of the adjacent, unflagged grids from the coordinates position.
+     * If flagged neighbours matches mined neighbours amount, opens all adjacent
+     * unflagged grids from the coordinates position.
      *
      * @param x X-coordinate.
      * @param y Y-coordinate.
-     * @return True if a mine was hit.
+     * @return List of all changed grids.
      */
     public ArrayList<Grid> openAdjacentsAt(int x, int y) {
         ArrayList<Grid> touched = new ArrayList<>();
         if (!isInBoardBoundary(x, y)) {
             return touched;
         }
-        if (gridAt(x, y).flaggedNeighboursMatchMinedNeighbours()){
-            for (Grid g : neighbourGrids(x, y)){
+        if (gridAt(x, y).flaggedNeighboursMatchMinedNeighbours()) {
+            for (Grid g : neighbourGrids(x, y)) {
                 g.open(touched);
             }
         }

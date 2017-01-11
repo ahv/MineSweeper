@@ -8,7 +8,8 @@ import java.util.ArrayList;
 
 /**
  * The UI facing class; has the required methods for playing the game, generates
- * the board internally, knows if the game is over, produces a final score.
+ * the board internally. A user interface needs to be set with setUserInterface
+ * before attempting to play the game, otherwise will crash.
  *
  * @author ahv
  */

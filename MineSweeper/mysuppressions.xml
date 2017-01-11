@@ -9,5 +9,5 @@
     <suppress files="GameFrame.java" checks="[a-zA-Z0-9]*"/>
 	<suppress files="Main.java" checks="[a-zA-Z0-9]*"/>
 	<suppress files="StartFrame.java" checks="[a-zA-Z0-9]*"/>
-	<suppress files="GameGrid.java" checks="[a-zA-Z0-9]*"/>
+	<suppress files="UiGrid.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>

@@ -4,8 +4,10 @@ package asd.fgh.minesweeper.logic.data;
 import java.util.ArrayList;
 
 /**
- * Simple data class to know everything a Grid needs to know about itself. Used
- * internally in Board class.
+ * Used internally in Board class. Handles recursive grid opening in conjunction
+ * with Board class (holds a reference to the board this grid belongs to - and
+ * when opening grids, handles recursive opening by asking the board class about
+ * this grid's neighbours).
  *
  * @author ahv
  */
@@ -39,6 +41,11 @@ public class Grid {
         return x;
     }
 
+    /**
+     * Useful in an user interface, tells what information the player should be
+     * currently seeing about the grid.
+     * @return GridState; what the grid currently "looks" like.
+     */
     public GridState getState() {
         if (revealed && mined) {
             return GridState.MINED;

@@ -1,7 +1,6 @@
 package asd.fgh.minesweeper.ui;
 
-import asd.fgh.minesweeper.ui.component.FrameGrid;
-import asd.fgh.minesweeper.logic.Difficulty;
+import asd.fgh.minesweeper.ui.component.UiGrid;
 import asd.fgh.minesweeper.logic.Game;
 import asd.fgh.minesweeper.logic.GameSettings;
 import asd.fgh.minesweeper.logic.UserInterface;
@@ -28,7 +27,7 @@ import javax.swing.BoxLayout;
 public class GameFrame extends Frame implements UserInterface {
 
     private final Game game;
-    private final FrameGrid[][] grid;
+    private final UiGrid[][] grid;
     private final Label timeLabel;
     private final Label mineLabel;
     private final Main main;
@@ -61,12 +60,12 @@ public class GameFrame extends Frame implements UserInterface {
         int h = s.getHeight();
         Panel minePanel = new Panel(new GridLayout(h, w, 1, 1));
         minePanel.setBackground(Color.GRAY);
-        this.grid = new FrameGrid[w][h];
+        this.grid = new UiGrid[w][h];
         int x, y;
         for (int i = 0; i < w * h; i++) {
             x = i % w;
             y = i / w;
-            FrameGrid g = new FrameGrid(this, game, x, y);
+            UiGrid g = new UiGrid(this, game, x, y);
             this.grid[x][y] = g;
             minePanel.add(g);
         }

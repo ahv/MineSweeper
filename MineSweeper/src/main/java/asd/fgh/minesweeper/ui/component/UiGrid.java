@@ -11,12 +11,16 @@ import java.awt.Panel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class FrameGrid extends Panel {
+/**
+ * UI component, representing a grid.
+ * @author ahv
+ */
+public class UiGrid extends Panel {
 
     private final Button b;
     private final Label l;
 
-    public FrameGrid(GameFrame frame, Game game, int x, int y) {
+    public UiGrid(GameFrame frame, Game game, int x, int y) {
         setLayout(new GridLayout());
         setBackground(Color.LIGHT_GRAY);
         b = new Button();

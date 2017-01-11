@@ -51,8 +51,9 @@ public class EndFrame extends Frame {
         buttonPanel.add(startFrameButton);
         buttonPanel.add(newGameButton);
         add(buttonPanel);
-        setSize(200, 200);
+        setSize(400, 400);
         setLocationRelativeTo(null);
+        setResizable(false);
         setVisible(true);
     }
 
