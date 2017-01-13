@@ -1,5 +1,6 @@
 package asd.fgh.minesweeper.ui;
 
+import asd.fgh.minesweeper.logic.Difficulty;
 import asd.fgh.minesweeper.logic.GameSettings;
 import asd.fgh.minesweeper.persistence.Score;
 import java.awt.Button;
@@ -24,7 +25,8 @@ public class EndFrame extends Frame {
                 System.exit(0);
             }
         });
-        setTitle((won ? "WON - ": "LOST - ") + score.getDifficulty() + " - " + score.getTime() + " seconds");
+        Difficulty difc = score.getDifficulty();
+        setTitle((won ? "WON - ": "LOST - ") + (difc != null ? difc : "CUSTOM") + " - " + score.getTime() + " seconds");
         this.main = main;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         add(new Label("Highscores", Label.CENTER));
