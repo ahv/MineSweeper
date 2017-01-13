@@ -3,7 +3,7 @@ Alkuvalikosta voidaan valita yksi kolmesta esimääritellystä vaikeusasteesta:
 - Intermediate: 40 miinaa 16x16 ruudukko
 - Advanced: 99 miinaa 30x16 ruudukko
 
-Voidaan myös määrittää omat asetukset. Asetukset rajautuu automaattisesti: Leveys on 4-30 ruutua, korkeus 4-16 ja miinoja voi olla korkeintaan yhtä paljon kuin pelissä ruutuja.
+Voidaan myös määrittää omat asetukset. Asetukset rajautuu automaattisesti: Leveys on 4-30 ruutua, korkeus 4-16 ja miinoja voi olla korkeintaan yhtä paljon kuin pelissä ruutuja, mutta kuitenkin vähintään yksi.
 
 Peliä pelataan klikkailemalla ruutuja hiiren oikealla tai vasemmalla painikkeella.
 Avaamatonta ruutua vasemmalla klikatessa ruutu avautuu ja jos ruudussa on miina, häviää pelin.
