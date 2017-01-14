@@ -50,13 +50,13 @@ public enum GridState { // TODO: Iffy
         }
     }
 
-    static Color blue = new Color(0, 0, 220);
-    static Color darkblue = new Color(0, 0, 120);
-    static Color green = new Color(0, 120, 0);
-    static Color red = new Color(220, 0, 0);
-    static Color darkred = new Color(120, 0, 0);
-    static Color teal = new Color(0, 220, 220);
-    static Color purple = new Color(120, 0, 120);
+    static final Color blue = new Color(0, 0, 220);
+    static final Color darkblue = new Color(0, 0, 120);
+    static final Color green = new Color(0, 120, 0);
+    static final Color red = new Color(220, 0, 0);
+    static final Color darkred = new Color(120, 0, 0);
+    static final Color teal = new Color(0, 220, 220);
+    static final Color purple = new Color(120, 0, 120);
 
     /**
      * Convenience for user interfaces, matches states with colors.

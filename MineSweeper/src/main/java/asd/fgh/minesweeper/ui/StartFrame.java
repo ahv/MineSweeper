@@ -72,10 +72,14 @@ public class StartFrame extends Frame {
         custom.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                try {
                 int m = Integer.parseInt(mines.getText());
                 int w = Integer.parseInt(width.getText());
                 int h = Integer.parseInt(height.getText());
                 main.startCustomGame(m,w,h);
+                } catch(Exception e){
+                    // TODO: Haxy "validation"
+                }
             }
         });
         add(customGamePanel);
