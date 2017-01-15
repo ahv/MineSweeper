@@ -3,7 +3,7 @@ Miinaharava. Lähes klooni Microsoftin omasta käyttöjärjestelmien mukana tule
 
 Miinojen sijaintia voi arvioida avatuista ruuduista saadun tiedon perusteella: jokainen miinoittamaton ruutu kertoo kuinka montaa miinaa se koskettaa, jos yhtään. Jos avataan ruutu joka ei kosketa ainuttakaan miinaa, avaa peli möys viereiset ruudut automaattisesti (ja niiden viereiset jos ei niistäkään löydy miinoja, rekursiivisesti).
 
-Yksittäisen ruudun avaamisen ja ruudun lipulla merkitsemisen lisäksi on pelissä kolmaskin toiminta jonka pelaaja voi yksittäiseen pelikierrokseen liittyen suorittaa: voidaan automaattisesti avata jo avatun ruudun viereiset ruudut klikkaamalla avattua ruutua hiiren keskipainikkeilla (rullanäppäimellä), edellyttäen että klikatun ruudun vierusruuduista löytyy sama määrä lippumerkintöjä kuin ruutu kertoo olevan miinoja viereisissä ruuduissa. Tässä tapauksessa peli olettaa, että pelaaja tietää mitä on tekemässä ja avaa tälle automaattisesti kaikki klikatun ruudun viereiset lippumerkittömän ruudut. 
+Yksittäisen ruudun avaamisen ja ruudun lipulla merkitsemisen lisäksi on pelissä kolmaskin toiminta jonka pelaaja voi yksittäiseen pelikierrokseen liittyen suorittaa: voidaan automaattisesti avata jo avatun ruudun viereiset ruudut klikkaamalla avattua ruutua hiiren vasemmalla painikkeella, edellyttäen että klikatun ruudun vierusruuduista löytyy sama määrä lippumerkintöjä kuin ruutu kertoo olevan miinoja viereisissä ruuduissa. Tässä tapauksessa peli olettaa, että pelaaja tietää mitä on tekemässä ja avaa tälle automaattisesti kaikki klikatun ruudun viereiset lippumerkittömän ruudut. 
 
 Itse peliruudun lisäksi näytetään pelajaalle aina pelikierroksen päätyttyä pisteruutu, ja jos nopeus esimäärätyllä vaikeusasteella riittää huippusijalle pyydetään tätä syöttämään nimi joka tallentuu huippupistetiedostoon. Pisteruutuun sisällytetään näppäimet uuden pelin aloittamiseen.
 
@@ -16,7 +16,7 @@ Pelaaja.
   - Voidaan myös määrittää ruudukon koko ja miinojen määrä itse (arvot validoidaan)
 - Ruudun avaus
 - Ruudun merkkaus
-- Huippupisteiden katselu
+- Viereisten ruutujen avaus
 
 **Rakennekuvaus:**
 Game luokka pelin kannalta keskeisin - edustaa yhtä miinaharavakierrosta (siis yhtä lautaa). Voidaan luoda kahdenlaisia pelejä: mukautettuja (omilla asetuksilla) tai jokin kolmesta esimääritellystä vaikeusasteesta. Mukautettujen asetusten validointi ja esimääritellyt asetukset löytyy GameSettings oliosta, joka luodaan Game-luokan konstruktorissa sisäisesti. GameSettingsin voi kuitenkin getata Game instanssista, koska siitä saa hyödyllistä tietoa käyttöliittymää varten (kentän leveys, korkeus, miinojen määrä). Game-instanssiin täytyy ennen pelaamisen aloittamista setUserInterfacella liittää jokin luokka joka toteuttaa UserInterface-rajapinnan.
@@ -36,7 +36,7 @@ Game luokka tunnistaa kun peli päättyy ja tässä tapauksessa kutsuu käyttöl
 
 **Sekvenssikaaviot:**
 
-(HUOM! Eivät vastaa todellisuutta tällä hetkellä, koodin rakenne muutettu äskettäin huomattavasti... uudet sekvenssikaaviot tulossa)
+(HUOM! Eivät vastaa todellisuutta tällä hetkellä, koodin rakennetta refaktoroitu äskettäin huomattavasti puhtaampaan muotoon... uudet sekvenssikaaviot tulossa pian™)
 
 ![Sekvenssikaavio1](https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/SequenceDiagram1.png)
 
