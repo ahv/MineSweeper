@@ -11,4 +11,4 @@
 
 [Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/checkstyle-raportti/site/checkstyle.html)
 
-[Pit-raportti](https://htmlpreview.github.io/?https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/pit-raportti/201701112348/index.html)
+[Pit-raportti](https://htmlpreview.github.io/?https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/pit-raportti/201701152220/index.html)
