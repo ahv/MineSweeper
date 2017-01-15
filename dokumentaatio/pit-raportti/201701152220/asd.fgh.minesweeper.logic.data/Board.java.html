@@ -199,7 +199,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''> * references to each changed Grid - so their visual representation can be</span></pre></td></tr>
+<td class=''><pre><span  class=''> * references to each changed Grid so their visual representation can be changed</span></pre></td></tr>
 
 
 <tr>
@@ -213,7 +213,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''> * changed in an user interface.</span></pre></td></tr>
+<td class=''><pre><span  class=''> * in an user interface.</span></pre></td></tr>
 
 
 <tr>
@@ -953,7 +953,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    // All non-mined grids are revealed -- the win condition.</span></pre></td></tr>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
 
 
 <tr>
@@ -967,7 +967,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * Checks if every non-mined grid has been revealed -- which happens to be</span></pre></td></tr>
 
 
 <tr>
@@ -981,7 +981,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * Checks if every non-mined grid has been revealed -- which happens to be</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * the win condition of the game.</span></pre></td></tr>
 
 
 <tr>
@@ -995,7 +995,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * the win condition of the game.</span></pre></td></tr>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
 
 
 <tr>
@@ -1009,7 +1009,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * @return True if essentially win condition has been met.</span></pre></td></tr>
 
 
 <tr>
@@ -1023,7 +1023,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * @return True if essentially win condition has been met.</span></pre></td></tr>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
 
 
 <tr>
@@ -1037,11 +1037,11 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+<td class=''><pre><span  class=''>    public boolean isCompletelyExplored() { // TODO: Simplify (track values internally?)</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_68'/>
 68
 </td>
@@ -1051,88 +1051,74 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    public boolean isCompletelyExplored() { // TODO: Simplify (track values internally)</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        int revealed = 0;</span></pre></td></tr>
 
 
 <tr>
-<td class='uncovered'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_69'/>
 69
 </td>
-<td class=''>
+<td class='survived'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_69'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_69'>4</a>
 <span>
+
+1. isCompletelyExplored : Replaced integer multiplication with division &rarr; SURVIVED<br/>
+
+2. isCompletelyExplored : negated conditional &rarr; SURVIVED<br/>
+
+3. isCompletelyExplored : changed conditional boundary &rarr; KILLED<br/>
+
+4. isCompletelyExplored : Changed increment from 1 to -1 &rarr; KILLED<br/>
+
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>        int revealed = 0;</span></pre></td></tr>
+<td class='covered'><pre><span  class='survived'>        for (int i = 0; i &#60; width * height; i++) {</span></pre></td></tr>
 
 
 <tr>
-<td class='uncovered'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_70'/>
 70
 </td>
 <td class='survived'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_70'>4</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_70'>1</a>
 <span>
 
-1. isCompletelyExplored : changed conditional boundary &rarr; NO_COVERAGE<br/>
-
-2. isCompletelyExplored : Changed increment from 1 to -1 &rarr; NO_COVERAGE<br/>
-
-3. isCompletelyExplored : Replaced integer multiplication with division &rarr; NO_COVERAGE<br/>
-
-4. isCompletelyExplored : negated conditional &rarr; NO_COVERAGE<br/>
+1. isCompletelyExplored : Replaced integer modulus with multiplication &rarr; SURVIVED<br/>
 
 </span>
 </td>
-<td class='uncovered'><pre><span  class='survived'>        for (int i = 0; i &#60; width * height; i++) {</span></pre></td></tr>
+<td class='covered'><pre><span  class='survived'>            int x = i % width;</span></pre></td></tr>
 
 
 <tr>
-<td class='uncovered'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_71'/>
 71
 </td>
-<td class='survived'>
+<td class='killed'>
 <span class='pop'>
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_71'>1</a>
 <span>
 
-1. isCompletelyExplored : Replaced integer modulus with multiplication &rarr; NO_COVERAGE<br/>
+1. isCompletelyExplored : Replaced integer division with multiplication &rarr; KILLED<br/>
 
 </span>
 </td>
-<td class='uncovered'><pre><span  class='survived'>            int x = i % width;</span></pre></td></tr>
-
-
-<tr>
-<td class='uncovered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_72'/>
-72
-</td>
-<td class='survived'>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_72'>1</a>
-<span>
-
-1. isCompletelyExplored : Replaced integer division with multiplication &rarr; NO_COVERAGE<br/>
-
-</span>
-</td>
-<td class='uncovered'><pre><span  class='survived'>            int y = i / width;</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>            int y = i / width;</span></pre></td></tr>
 
 
 <tr>
 <td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_73'/>
-73
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_72'/>
+72
 </td>
 <td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_73'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_72'></a>
 <span>
 </span>
 </td>
@@ -1140,7 +1126,24 @@ body{
 
 
 <tr>
-<td class='uncovered'>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_73'/>
+73
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_73'>1</a>
+<span>
+
+1. isCompletelyExplored : negated conditional &rarr; SURVIVED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>            if (grid[x][y].isRevealed()) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_74'/>
 74
 </td>
@@ -1149,28 +1152,25 @@ body{
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_74'>1</a>
 <span>
 
-1. isCompletelyExplored : negated conditional &rarr; NO_COVERAGE<br/>
+1. isCompletelyExplored : Changed increment from 1 to -1 &rarr; SURVIVED<br/>
 
 </span>
 </td>
-<td class='uncovered'><pre><span  class='survived'>            if (grid[x][y].isRevealed()) {</span></pre></td></tr>
+<td class='covered'><pre><span  class='survived'>                revealed++;</span></pre></td></tr>
 
 
 <tr>
-<td class='uncovered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_75'/>
 75
 </td>
-<td class='survived'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_75'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_75'></a>
 <span>
-
-1. isCompletelyExplored : Changed increment from 1 to -1 &rarr; NO_COVERAGE<br/>
-
 </span>
 </td>
-<td class='uncovered'><pre><span  class='survived'>                revealed++;</span></pre></td></tr>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
 
 
 <tr>
@@ -1184,44 +1184,44 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>            }</span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_77'/>
-77
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_77'></a>
-<span>
-</span>
-</td>
 <td class=''><pre><span  class=''>        }</span></pre></td></tr>
 
 
 <tr>
-<td class='uncovered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_78'/>
-78
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_77'/>
+77
 </td>
 <td class='survived'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_78'>4</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_77'>4</a>
 <span>
 
-1. isCompletelyExplored : Replaced integer addition with subtraction &rarr; NO_COVERAGE<br/>
+1. isCompletelyExplored : Replaced integer addition with subtraction &rarr; SURVIVED<br/>
 
-2. isCompletelyExplored : Replaced integer multiplication with division &rarr; NO_COVERAGE<br/>
+2. isCompletelyExplored : Replaced integer multiplication with division &rarr; SURVIVED<br/>
 
-3. isCompletelyExplored : negated conditional &rarr; NO_COVERAGE<br/>
+3. isCompletelyExplored : negated conditional &rarr; SURVIVED<br/>
 
-4. isCompletelyExplored : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NO_COVERAGE<br/>
+4. isCompletelyExplored : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; SURVIVED<br/>
 
 </span>
 </td>
-<td class='uncovered'><pre><span  class='survived'>        return revealed + mines == width * height;</span></pre></td></tr>
+<td class='covered'><pre><span  class='survived'>        return revealed + mines == width * height;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_78'/>
+78
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_78'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
 
 
 <tr>
@@ -1235,7 +1235,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
@@ -1249,7 +1249,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
 
 
 <tr>
@@ -1263,7 +1263,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * Opens a grid at coordinates. If the opened grid touches no mines, Grid</span></pre></td></tr>
 
 
 <tr>
@@ -1277,7 +1277,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * Opens a grid at coordinates. If the opened grid touches no mines, Grid</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * class also recursively opens adjacent grids until the edges of the</span></pre></td></tr>
 
 
 <tr>
@@ -1291,7 +1291,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * class also recursively opens adjacent grids until the edges of the</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * unmined &#34;island&#34; have been found.</span></pre></td></tr>
 
 
 <tr>
@@ -1305,7 +1305,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * unmined &#34;island&#34; have been found.</span></pre></td></tr>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
 
 
 <tr>
@@ -1319,7 +1319,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * @param x X-coordinate.</span></pre></td></tr>
 
 
 <tr>
@@ -1333,7 +1333,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * @param x X-coordinate.</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * @param y Y-coordinate.</span></pre></td></tr>
 
 
 <tr>
@@ -1347,7 +1347,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * @param y Y-coordinate.</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * @return Returns a list of references to each changed grid.</span></pre></td></tr>
 
 
 <tr>
@@ -1361,7 +1361,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * @return Returns a list of references to each changed grid.</span></pre></td></tr>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
 
 
 <tr>
@@ -1375,11 +1375,11 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+<td class=''><pre><span  class=''>    public ArrayList&#60;Grid&#62; openGridAt(int x, int y) {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_90'/>
 90
 </td>
@@ -1389,7 +1389,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    public ArrayList&#60;Grid&#62; openGridAt(int x, int y) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        ArrayList&#60;Grid&#62; touched = new ArrayList&#60;&#62;();</span></pre></td></tr>
 
 
 <tr>
@@ -1397,23 +1397,9 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_91'/>
 91
 </td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_91'></a>
-<span>
-</span>
-</td>
-<td class='covered'><pre><span  class=''>        ArrayList&#60;Grid&#62; touched = new ArrayList&#60;&#62;();</span></pre></td></tr>
-
-
-<tr>
-<td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_92'/>
-92
-</td>
 <td class='survived'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_92'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_91'>1</a>
 <span>
 
 1. openGridAt : negated conditional &rarr; SURVIVED<br/>
@@ -1425,12 +1411,12 @@ body{
 
 <tr>
 <td class='uncovered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_93'/>
-93
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_92'/>
+92
 </td>
 <td class='survived'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_93'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_92'>1</a>
 <span>
 
 1. openGridAt : mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::openGridAt to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE<br/>
@@ -1442,6 +1428,20 @@ body{
 
 <tr>
 <td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_93'/>
+93
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_93'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_94'/>
 94
 </td>
@@ -1451,7 +1451,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        Grid g = gridAt(x, y);</span></pre></td></tr>
 
 
 <tr>
@@ -1465,7 +1465,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        Grid g = gridAt(x, y);</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        g.open(touched);</span></pre></td></tr>
 
 
 <tr>
@@ -1473,23 +1473,9 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_96'/>
 96
 </td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_96'></a>
-<span>
-</span>
-</td>
-<td class='covered'><pre><span  class=''>        g.open(touched);</span></pre></td></tr>
-
-
-<tr>
-<td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_97'/>
-97
-</td>
 <td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_97'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_96'>1</a>
 <span>
 
 1. openGridAt : mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::openGridAt to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
@@ -1497,6 +1483,20 @@ body{
 </span>
 </td>
 <td class='covered'><pre><span  class='killed'>        return touched;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_97'/>
+97
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_97'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
 
 
 <tr>
@@ -1510,7 +1510,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
@@ -1524,7 +1524,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
 
 
 <tr>
@@ -1538,7 +1538,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * Flips a flag in grid.</span></pre></td></tr>
 
 
 <tr>
@@ -1552,7 +1552,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * Flips a flag in grid.</span></pre></td></tr>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
 
 
 <tr>
@@ -1566,7 +1566,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * @param x x-coordinate.</span></pre></td></tr>
 
 
 <tr>
@@ -1580,7 +1580,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * @param x x-coordinate.</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * @param y y-coordinate.</span></pre></td></tr>
 
 
 <tr>
@@ -1594,7 +1594,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * @param y y-coordinate.</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * @return Reference to affected grid.</span></pre></td></tr>
 
 
 <tr>
@@ -1608,7 +1608,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * @return Reference to affected grid.</span></pre></td></tr>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
 
 
 <tr>
@@ -1622,21 +1622,24 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+<td class=''><pre><span  class=''>    public Grid flipFlag(int x, int y) {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_107'/>
 107
 </td>
-<td class=''>
+<td class='survived'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_107'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_107'>1</a>
 <span>
+
+1. flipFlag : negated conditional &rarr; SURVIVED<br/>
+
 </span>
 </td>
-<td class=''><pre><span  class=''>    public Grid flipFlag(int x, int y) {</span></pre></td></tr>
+<td class='covered'><pre><span  class='survived'>        if (isInBoardBoundary(x, y)) {</span></pre></td></tr>
 
 
 <tr>
@@ -1649,23 +1652,6 @@ body{
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_108'>1</a>
 <span>
 
-1. flipFlag : negated conditional &rarr; SURVIVED<br/>
-
-</span>
-</td>
-<td class='covered'><pre><span  class='survived'>        if (isInBoardBoundary(x, y)) {</span></pre></td></tr>
-
-
-<tr>
-<td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_109'/>
-109
-</td>
-<td class='survived'>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_109'>1</a>
-<span>
-
 1. flipFlag : removed call to asd/fgh/minesweeper/logic/data/Grid::flipFlag &rarr; SURVIVED<br/>
 
 </span>
@@ -1675,12 +1661,12 @@ body{
 
 <tr>
 <td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_110'/>
-110
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_109'/>
+109
 </td>
 <td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_110'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_109'></a>
 <span>
 </span>
 </td>
@@ -1689,12 +1675,12 @@ body{
 
 <tr>
 <td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_111'/>
-111
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_110'/>
+110
 </td>
 <td class='survived'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_111'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_110'>1</a>
 <span>
 
 1. flipFlag : mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::flipFlag to ( if (x != null) null else throw new RuntimeException ) &rarr; SURVIVED<br/>
@@ -1702,6 +1688,20 @@ body{
 </span>
 </td>
 <td class='covered'><pre><span  class='survived'>        return grid[x][y];</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_111'/>
+111
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_111'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
 
 
 <tr>
@@ -1715,7 +1715,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
@@ -1729,7 +1729,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
 
 
 <tr>
@@ -1743,7 +1743,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * If flagged neighbours matches mined neighbours amount, opens all adjacent</span></pre></td></tr>
 
 
 <tr>
@@ -1757,7 +1757,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * If flagged neighbours matches mined neighbours amount, opens all adjacent</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * unflagged grids from the coordinates position.</span></pre></td></tr>
 
 
 <tr>
@@ -1771,7 +1771,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * unflagged grids from the coordinates position.</span></pre></td></tr>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
 
 
 <tr>
@@ -1785,7 +1785,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * @param x X-coordinate.</span></pre></td></tr>
 
 
 <tr>
@@ -1799,7 +1799,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * @param x X-coordinate.</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * @param y Y-coordinate.</span></pre></td></tr>
 
 
 <tr>
@@ -1813,7 +1813,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * @param y Y-coordinate.</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * @return List of all changed grids.</span></pre></td></tr>
 
 
 <tr>
@@ -1827,7 +1827,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * @return List of all changed grids.</span></pre></td></tr>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
 
 
 <tr>
@@ -1841,11 +1841,11 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+<td class=''><pre><span  class=''>    public ArrayList&#60;Grid&#62; openAdjacentsAt(int x, int y) {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_122'/>
 122
 </td>
@@ -1855,7 +1855,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    public ArrayList&#60;Grid&#62; openAdjacentsAt(int x, int y) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        ArrayList&#60;Grid&#62; touched = new ArrayList&#60;&#62;();</span></pre></td></tr>
 
 
 <tr>
@@ -1863,23 +1863,9 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_123'/>
 123
 </td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_123'></a>
-<span>
-</span>
-</td>
-<td class='covered'><pre><span  class=''>        ArrayList&#60;Grid&#62; touched = new ArrayList&#60;&#62;();</span></pre></td></tr>
-
-
-<tr>
-<td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_124'/>
-124
-</td>
 <td class='survived'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_124'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_123'>1</a>
 <span>
 
 1. openAdjacentsAt : negated conditional &rarr; SURVIVED<br/>
@@ -1891,12 +1877,12 @@ body{
 
 <tr>
 <td class='uncovered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_125'/>
-125
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_124'/>
+124
 </td>
 <td class='survived'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_125'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_124'>1</a>
 <span>
 
 1. openAdjacentsAt : mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::openAdjacentsAt to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE<br/>
@@ -1908,16 +1894,33 @@ body{
 
 <tr>
 <td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_126'/>
-126
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_125'/>
+125
 </td>
 <td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_126'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_125'></a>
 <span>
 </span>
 </td>
 <td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_126'/>
+126
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_126'>1</a>
+<span>
+
+1. openAdjacentsAt : negated conditional &rarr; SURVIVED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        if (gridAt(x, y).flaggedNeighboursMatchMinedNeighbours()) {</span></pre></td></tr>
 
 
 <tr>
@@ -1934,7 +1937,7 @@ body{
 
 </span>
 </td>
-<td class='covered'><pre><span  class='survived'>        if (gridAt(x, y).flaggedNeighboursMatchMinedNeighbours()) {</span></pre></td></tr>
+<td class='covered'><pre><span  class='survived'>            for (Grid g : neighbourGrids(x, y)) {</span></pre></td></tr>
 
 
 <tr>
@@ -1942,16 +1945,13 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_128'/>
 128
 </td>
-<td class='survived'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_128'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_128'></a>
 <span>
-
-1. openAdjacentsAt : negated conditional &rarr; SURVIVED<br/>
-
 </span>
 </td>
-<td class='covered'><pre><span  class='survived'>            for (Grid g : neighbourGrids(x, y)) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                g.open(touched);</span></pre></td></tr>
 
 
 <tr>
@@ -1965,11 +1965,11 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                g.open(touched);</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>            }</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_130'/>
 130
 </td>
@@ -1979,31 +1979,17 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>            }</span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_131'/>
-131
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_131'></a>
-<span>
-</span>
-</td>
 <td class=''><pre><span  class=''>        }</span></pre></td></tr>
 
 
 <tr>
 <td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_132'/>
-132
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_131'/>
+131
 </td>
 <td class='survived'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_132'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_131'>1</a>
 <span>
 
 1. openAdjacentsAt : mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::openAdjacentsAt to ( if (x != null) null else throw new RuntimeException ) &rarr; SURVIVED<br/>
@@ -2011,6 +1997,20 @@ body{
 </span>
 </td>
 <td class='covered'><pre><span  class='survived'>        return touched;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_132'/>
+132
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_132'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
 
 
 <tr>
@@ -2024,7 +2024,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
@@ -2038,7 +2038,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class=''><pre><span  class=''>    // TODO: A little dirty looking.</span></pre></td></tr>
 
 
 <tr>
@@ -2052,11 +2052,11 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    // TODO: A little dirty looking.</span></pre></td></tr>
+<td class=''><pre><span  class=''>    ArrayList&#60;Grid&#62; neighbourGrids(int x, int y) {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_136'/>
 136
 </td>
@@ -2066,7 +2066,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    ArrayList&#60;Grid&#62; neighbourGrids(int x, int y) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        ArrayList&#60;Grid&#62; neighbours = new ArrayList&#60;&#62;();</span></pre></td></tr>
 
 
 <tr>
@@ -2074,23 +2074,9 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_137'/>
 137
 </td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_137'></a>
-<span>
-</span>
-</td>
-<td class='covered'><pre><span  class=''>        ArrayList&#60;Grid&#62; neighbours = new ArrayList&#60;&#62;();</span></pre></td></tr>
-
-
-<tr>
-<td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_138'/>
-138
-</td>
 <td class='survived'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_138'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_137'>1</a>
 <span>
 
 1. neighbourGrids : negated conditional &rarr; SURVIVED<br/>
@@ -2102,12 +2088,12 @@ body{
 
 <tr>
 <td class='uncovered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_139'/>
-139
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_138'/>
+138
 </td>
 <td class='survived'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_139'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_138'>1</a>
 <span>
 
 1. neighbourGrids : mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::neighbourGrids to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE<br/>
@@ -2119,12 +2105,12 @@ body{
 
 <tr>
 <td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_140'/>
-140
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_139'/>
+139
 </td>
 <td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_140'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_139'></a>
 <span>
 </span>
 </td>
@@ -2133,12 +2119,12 @@ body{
 
 <tr>
 <td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_141'/>
-141
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_140'/>
+140
 </td>
 <td class='survived'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_141'>7</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_140'>7</a>
 <span>
 
 1. neighbourGrids : Replaced integer subtraction with addition &rarr; SURVIVED<br/>
@@ -2162,12 +2148,12 @@ body{
 
 <tr>
 <td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_142'/>
-142
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_141'/>
+141
 </td>
 <td class='survived'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_142'>5</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_141'>5</a>
 <span>
 
 1. neighbourGrids : Replaced integer subtraction with addition &rarr; SURVIVED<br/>
@@ -2187,12 +2173,12 @@ body{
 
 <tr>
 <td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_143'/>
-143
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_142'/>
+142
 </td>
 <td class='survived'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_143'>3</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_142'>3</a>
 <span>
 
 1. neighbourGrids : negated conditional &rarr; SURVIVED<br/>
@@ -2208,12 +2194,12 @@ body{
 
 <tr>
 <td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_144'/>
-144
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_143'/>
+143
 </td>
 <td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_144'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_143'>1</a>
 <span>
 
 1. neighbourGrids : negated conditional &rarr; KILLED<br/>
@@ -2225,6 +2211,20 @@ body{
 
 <tr>
 <td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_144'/>
+144
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_144'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                neighbours.add(g);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_145'/>
 145
 </td>
@@ -2234,7 +2234,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                neighbours.add(g);</span></pre></td></tr>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
 
 
 <tr>
@@ -2248,31 +2248,17 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>            }</span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_147'/>
-147
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_147'></a>
-<span>
-</span>
-</td>
 <td class=''><pre><span  class=''>        }</span></pre></td></tr>
 
 
 <tr>
 <td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_148'/>
-148
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_147'/>
+147
 </td>
 <td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_148'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_147'>1</a>
 <span>
 
 1. neighbourGrids : mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::neighbourGrids to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
@@ -2280,6 +2266,20 @@ body{
 </span>
 </td>
 <td class='covered'><pre><span  class='killed'>        return neighbours;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_148'/>
+148
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_148'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
 
 
 <tr>
@@ -2293,7 +2293,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
@@ -2307,21 +2307,24 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class=''><pre><span  class=''>    private Grid gridAt(int x, int y) {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_151'/>
 151
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_151'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_151'>1</a>
 <span>
+
+1. gridAt : negated conditional &rarr; KILLED<br/>
+
 </span>
 </td>
-<td class=''><pre><span  class=''>    private Grid gridAt(int x, int y) {</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>        if (isInBoardBoundary(x, y)) {</span></pre></td></tr>
 
 
 <tr>
@@ -2334,23 +2337,6 @@ body{
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_152'>1</a>
 <span>
 
-1. gridAt : negated conditional &rarr; KILLED<br/>
-
-</span>
-</td>
-<td class='covered'><pre><span  class='killed'>        if (isInBoardBoundary(x, y)) {</span></pre></td></tr>
-
-
-<tr>
-<td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_153'/>
-153
-</td>
-<td class='killed'>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_153'>1</a>
-<span>
-
 1. gridAt : mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::gridAt to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
 
 </span>
@@ -2360,12 +2346,12 @@ body{
 
 <tr>
 <td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_154'/>
-154
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_153'/>
+153
 </td>
 <td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_154'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_153'></a>
 <span>
 </span>
 </td>
@@ -2374,12 +2360,12 @@ body{
 
 <tr>
 <td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_155'/>
-155
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_154'/>
+154
 </td>
 <td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_155'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_154'>1</a>
 <span>
 
 1. gridAt : mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::gridAt to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
@@ -2391,12 +2377,12 @@ body{
 
 <tr>
 <td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_156'/>
-156
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_155'/>
+155
 </td>
 <td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_156'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_155'></a>
 <span>
 </span>
 </td>
@@ -2405,12 +2391,12 @@ body{
 
 <tr>
 <td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_157'/>
-157
+<a name='org.pitest.mutationtest.report.html.SourceFile@11f406f8_156'/>
+156
 </td>
 <td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_157'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_156'></a>
 <span>
 </span>
 </td>
@@ -2428,7 +2414,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_42'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b><init><br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.canCompletelyExplore(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b><init><br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.canCompletelyExplore(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b><init><br/><b>Killed by : </b>asd.fgh.minesweeper.logic.GameTest.testFlagGridReturnedArrayLengthIsOne(asd.fgh.minesweeper.logic.GameTest)</span></span> Replaced integer multiplication with division &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b><init><br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.canOpenAdjacents(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> negated conditional &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b><init><br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.outOfBoundsCoordinatesReturnFalse(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b><init><br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.outOfBoundsCoordinatesReturnFalse(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b><init><br/><b>Killed by : </b>asd.fgh.minesweeper.logic.GameTest.testFlagGridReturnedArrayLengthIsOne(asd.fgh.minesweeper.logic.GameTest)</span></span> Replaced integer multiplication with division &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b><init><br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.canOpenAdjacents(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 
@@ -2439,7 +2425,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_43'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b><init><br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.canCompletelyExplore(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> Replaced integer modulus with multiplication &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b><init><br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.outOfBoundsCoordinatesReturnFalse(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> Replaced integer modulus with multiplication &rarr; KILLED</p> 
 </td>
 </tr>
 
@@ -2450,7 +2436,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_44'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b><init><br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.canCompletelyExplore(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> Replaced integer division with multiplication &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b><init><br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.outOfBoundsCoordinatesReturnFalse(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> Replaced integer division with multiplication &rarr; KILLED</p> 
 </td>
 </tr>
 
@@ -2483,7 +2469,18 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_58'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isInBoardBoundary<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.inBoundsCoordinatesReturnTrue(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isInBoardBoundary<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.outOfBoundsCoordinatesReturnFalse(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isInBoardBoundary<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.inBoundsCoordinatesReturnTrue(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>isInBoardBoundary<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.outOfBoundsCoordinatesReturnFalse(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>isInBoardBoundary<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.inBoundsCoordinatesReturnTrue(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>isInBoardBoundary<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.inBoundsCoordinatesReturnTrue(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>7.<span><b>7</b><br/><b>Location : </b>isInBoardBoundary<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.inBoundsCoordinatesReturnTrue(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>8.<span><b>8</b><br/><b>Location : </b>isInBoardBoundary<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.inBoundsCoordinatesReturnTrue(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>9.<span><b>9</b><br/><b>Location : </b>isInBoardBoundary<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.inBoundsCoordinatesReturnTrue(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isInBoardBoundary<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.inBoundsCoordinatesReturnTrue(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isInBoardBoundary<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.outOfBoundsCoordinatesReturnFalse(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isInBoardBoundary<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.inBoundsCoordinatesReturnTrue(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>isInBoardBoundary<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.outOfBoundsCoordinatesReturnFalse(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>isInBoardBoundary<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.outOfBoundsCoordinatesReturnFalse(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>isInBoardBoundary<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.outOfBoundsCoordinatesReturnFalse(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>7.<span><b>7</b><br/><b>Location : </b>isInBoardBoundary<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.outOfBoundsCoordinatesReturnFalse(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>8.<span><b>8</b><br/><b>Location : </b>isInBoardBoundary<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.outOfBoundsCoordinatesReturnFalse(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>9.<span><b>9</b><br/><b>Location : </b>isInBoardBoundary<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.outOfBoundsCoordinatesReturnFalse(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_69'>69</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_69'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.GameTest.testCanOpenGrid(asd.fgh.minesweeper.logic.GameTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.GameTest.testCanOpenGrid(asd.fgh.minesweeper.logic.GameTest)</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> <p class='SURVIVED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> Replaced integer multiplication with division &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
 </td>
 </tr>
 
@@ -2494,7 +2491,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_70'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; NO_COVERAGE</p> <p class='NO_COVERAGE'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> Changed increment from 1 to -1 &rarr; NO_COVERAGE</p> <p class='NO_COVERAGE'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> Replaced integer multiplication with division &rarr; NO_COVERAGE</p> <p class='NO_COVERAGE'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NO_COVERAGE</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> Replaced integer modulus with multiplication &rarr; SURVIVED</p> 
 </td>
 </tr>
 
@@ -2505,18 +2502,18 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_71'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> Replaced integer modulus with multiplication &rarr; NO_COVERAGE</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.GameTest.testCanOpenGrid(asd.fgh.minesweeper.logic.GameTest)</span></span> Replaced integer division with multiplication &rarr; KILLED</p> 
 </td>
 </tr>
 
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_72'>72</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_73'>73</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_72'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_73'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> Replaced integer division with multiplication &rarr; NO_COVERAGE</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
 </td>
 </tr>
 
@@ -2527,29 +2524,29 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_74'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NO_COVERAGE</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> Changed increment from 1 to -1 &rarr; SURVIVED</p> 
 </td>
 </tr>
 
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_75'>75</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_77'>77</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_75'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_77'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> Changed increment from 1 to -1 &rarr; NO_COVERAGE</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> Replaced integer multiplication with division &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; SURVIVED</p> 
 </td>
 </tr>
 
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_78'>78</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_91'>91</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_78'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_91'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; NO_COVERAGE</p> <p class='NO_COVERAGE'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> Replaced integer multiplication with division &rarr; NO_COVERAGE</p> <p class='NO_COVERAGE'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NO_COVERAGE</p> <p class='NO_COVERAGE'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>isCompletelyExplored<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NO_COVERAGE</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>openGridAt<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
 </td>
 </tr>
 
@@ -2560,29 +2557,29 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_92'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>openGridAt<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
-</td>
-</tr>
-
-<tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_93'>93</a></td> 
-<td></td>
-<td>
-
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_93'/> 
-
 <p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>openGridAt<br/><b>Killed by : </b>none</span></span> mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::openGridAt to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE</p> 
 </td>
 </tr>
 
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_97'>97</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_96'>96</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_97'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_96'/> 
 
 <p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>openGridAt<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.GameTest.testCanOpenGrid(asd.fgh.minesweeper.logic.GameTest)</span></span> mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::openGridAt to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_107'>107</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_107'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>flipFlag<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
 </td>
 </tr>
 
@@ -2593,29 +2590,29 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_108'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>flipFlag<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
-</td>
-</tr>
-
-<tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_109'>109</a></td> 
-<td></td>
-<td>
-
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_109'/> 
-
 <p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>flipFlag<br/><b>Killed by : </b>none</span></span> removed call to asd/fgh/minesweeper/logic/data/Grid::flipFlag &rarr; SURVIVED</p> 
 </td>
 </tr>
 
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_111'>111</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_110'>110</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_111'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_110'/> 
 
 <p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>flipFlag<br/><b>Killed by : </b>none</span></span> mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::flipFlag to ( if (x != null) null else throw new RuntimeException ) &rarr; SURVIVED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_123'>123</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_123'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>openAdjacentsAt<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
 </td>
 </tr>
 
@@ -2626,18 +2623,18 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_124'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>openAdjacentsAt<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>openAdjacentsAt<br/><b>Killed by : </b>none</span></span> mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::openAdjacentsAt to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE</p> 
 </td>
 </tr>
 
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_125'>125</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_126'>126</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_125'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_126'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>openAdjacentsAt<br/><b>Killed by : </b>none</span></span> mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::openAdjacentsAt to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>openAdjacentsAt<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
 </td>
 </tr>
 
@@ -2653,24 +2650,24 @@ body{
 </tr>
 
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_128'>128</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_131'>131</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_128'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_131'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>openAdjacentsAt<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>openAdjacentsAt<br/><b>Killed by : </b>none</span></span> mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::openAdjacentsAt to ( if (x != null) null else throw new RuntimeException ) &rarr; SURVIVED</p> 
 </td>
 </tr>
 
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_132'>132</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_137'>137</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_132'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_137'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>openAdjacentsAt<br/><b>Killed by : </b>none</span></span> mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::openAdjacentsAt to ( if (x != null) null else throw new RuntimeException ) &rarr; SURVIVED</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
 </td>
 </tr>
 
@@ -2681,18 +2678,18 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_138'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::neighbourGrids to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE</p> 
 </td>
 </tr>
 
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_139'>139</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_140'>140</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_139'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_140'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::neighbourGrids to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>7.<span><b>7</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; SURVIVED</p> 
 </td>
 </tr>
 
@@ -2703,7 +2700,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_141'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>7.<span><b>7</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; SURVIVED</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; SURVIVED</p> 
 </td>
 </tr>
 
@@ -2714,7 +2711,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_142'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; SURVIVED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.canOpenAdjacents(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.canOpenAdjacents(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> <p class='SURVIVED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
 </td>
 </tr>
 
@@ -2725,29 +2722,29 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_143'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.canOpenAdjacents(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.canOpenAdjacents(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> <p class='SURVIVED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
-</td>
-</tr>
-
-<tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_144'>144</a></td> 
-<td></td>
-<td>
-
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_144'/> 
-
 <p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.canOpenAdjacents(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_148'>148</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_147'>147</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_148'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_147'/> 
 
 <p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>neighbourGrids<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.canOpenAdjacents(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::neighbourGrids to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_151'>151</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_151'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>gridAt<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.canOpenAdjacents(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 
@@ -2758,27 +2755,16 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_152'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>gridAt<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.canOpenAdjacents(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> negated conditional &rarr; KILLED</p> 
-</td>
-</tr>
-
-<tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_153'>153</a></td> 
-<td></td>
-<td>
-
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_153'/> 
-
 <p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>gridAt<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.canOpenAdjacents(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::gridAt to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
 </td>
 </tr>
 
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_155'>155</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@11f406f8_154'>154</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_155'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@11f406f8_154'/> 
 
 <p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>gridAt<br/><b>Killed by : </b>asd.fgh.minesweeper.logic.data.BoardTest.canOpenAdjacents(asd.fgh.minesweeper.logic.data.BoardTest)</span></span> mutated return of Object value for asd/fgh/minesweeper/logic/data/Board::gridAt to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
 </td>
@@ -2808,7 +2794,7 @@ body{
 
 <h2>Tests examined</h2>
 <ul>
-<li>asd.fgh.minesweeper.logic.data.BoardTest.outOfBoundsCoordinatesReturnFalse(asd.fgh.minesweeper.logic.data.BoardTest) (1 ms)</li><li>asd.fgh.minesweeper.logic.GameTest.testFlagGridReturnsArrayToUi(asd.fgh.minesweeper.logic.GameTest) (0 ms)</li><li>asd.fgh.minesweeper.logic.data.BoardTest.canCompletelyExplore(asd.fgh.minesweeper.logic.data.BoardTest) (1 ms)</li><li>asd.fgh.minesweeper.logic.data.BoardTest.canOpenAdjacents(asd.fgh.minesweeper.logic.data.BoardTest) (5 ms)</li><li>asd.fgh.minesweeper.logic.GameTest.testCanCreateBeginnerGame(asd.fgh.minesweeper.logic.GameTest) (3 ms)</li><li>asd.fgh.minesweeper.logic.GameTest.testCanOpenGrid(asd.fgh.minesweeper.logic.GameTest) (70 ms)</li><li>asd.fgh.minesweeper.logic.GameTest.testCanCreateIntermediateGame(asd.fgh.minesweeper.logic.GameTest) (2 ms)</li><li>asd.fgh.minesweeper.logic.GameTest.testCanFlagGrid(asd.fgh.minesweeper.logic.GameTest) (1 ms)</li><li>asd.fgh.minesweeper.logic.data.BoardTest.inBoundsCoordinatesReturnTrue(asd.fgh.minesweeper.logic.data.BoardTest) (1 ms)</li><li>asd.fgh.minesweeper.logic.GameTest.testFlagGridReturnedArrayLengthIsOne(asd.fgh.minesweeper.logic.GameTest) (1 ms)</li><li>asd.fgh.minesweeper.logic.GameTest.testCanCreateAdvancedGame(asd.fgh.minesweeper.logic.GameTest) (21 ms)</li><li>asd.fgh.minesweeper.logic.GameTest.testCanCreateCustomGame(asd.fgh.minesweeper.logic.GameTest) (2 ms)</li>
+<li>asd.fgh.minesweeper.logic.data.BoardTest.outOfBoundsCoordinatesReturnFalse(asd.fgh.minesweeper.logic.data.BoardTest) (0 ms)</li><li>asd.fgh.minesweeper.logic.GameTest.testFlagGridReturnsArrayToUi(asd.fgh.minesweeper.logic.GameTest) (1 ms)</li><li>asd.fgh.minesweeper.logic.data.BoardTest.canCompletelyExplore(asd.fgh.minesweeper.logic.data.BoardTest) (1 ms)</li><li>asd.fgh.minesweeper.logic.data.BoardTest.canOpenAdjacents(asd.fgh.minesweeper.logic.data.BoardTest) (6 ms)</li><li>asd.fgh.minesweeper.logic.GameTest.testCanCreateBeginnerGame(asd.fgh.minesweeper.logic.GameTest) (2 ms)</li><li>asd.fgh.minesweeper.logic.GameTest.testCanOpenGrid(asd.fgh.minesweeper.logic.GameTest) (177 ms)</li><li>asd.fgh.minesweeper.logic.GameTest.testCanCreateIntermediateGame(asd.fgh.minesweeper.logic.GameTest) (2 ms)</li><li>asd.fgh.minesweeper.logic.GameTest.testCanFlagGrid(asd.fgh.minesweeper.logic.GameTest) (1 ms)</li><li>asd.fgh.minesweeper.logic.data.BoardTest.inBoundsCoordinatesReturnTrue(asd.fgh.minesweeper.logic.data.BoardTest) (1 ms)</li><li>asd.fgh.minesweeper.logic.GameTest.testFlagGridReturnedArrayLengthIsOne(asd.fgh.minesweeper.logic.GameTest) (4 ms)</li><li>asd.fgh.minesweeper.logic.GameTest.testCanCreateAdvancedGame(asd.fgh.minesweeper.logic.GameTest) (21 ms)</li><li>asd.fgh.minesweeper.logic.GameTest.testCanCreateCustomGame(asd.fgh.minesweeper.logic.GameTest) (2 ms)</li>
 </ul>
 
 <br/>
