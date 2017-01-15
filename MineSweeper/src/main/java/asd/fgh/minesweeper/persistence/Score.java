@@ -53,7 +53,7 @@ public class Score implements Serializable, Comparable<Score> {
      * @param name Name to associate with the score.
      */
     public void setName(String name) {
-        if (name != null) {
+        if (this.name == null) {
             // TODO: Validate
             this.name = name;
         }
