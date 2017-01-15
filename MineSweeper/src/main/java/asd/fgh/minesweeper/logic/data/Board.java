@@ -7,8 +7,8 @@ import java.util.ArrayList;
  * inspect them. This class is the only public class in
  * asd.fgh.minesweeper.logic.data and is used internally in an instance of a
  * Game. The board state manipulating methods return array lists that hold
- * references to each changed Grid - so their visual representation can be
- * changed in an user interface.
+ * references to each changed Grid so their visual representation can be changed
+ * in an user interface.
  *
  * To separate Board creation logic and the generated data itself this class
  * uses a MineMap instance internally during its construction to abstract away
@@ -58,14 +58,13 @@ public class Board {
         return (x >= 0 && x < width && y >= 0 && y < height);
     }
 
-    // All non-mined grids are revealed -- the win condition.
     /**
      * Checks if every non-mined grid has been revealed -- which happens to be
      * the win condition of the game.
      *
      * @return True if essentially win condition has been met.
      */
-    public boolean isCompletelyExplored() { // TODO: Simplify (track values internally)
+    public boolean isCompletelyExplored() { // TODO: Simplify (track values internally?)
         int revealed = 0;
         for (int i = 0; i < width * height; i++) {
             int x = i % width;

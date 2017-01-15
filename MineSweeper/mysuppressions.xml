@@ -10,4 +10,5 @@
 	<suppress files="Main.java" checks="[a-zA-Z0-9]*"/>
 	<suppress files="StartFrame.java" checks="[a-zA-Z0-9]*"/>
 	<suppress files="UiGrid.java" checks="[a-zA-Z0-9]*"/>
+	<suppress files="NameEntryFrame.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>

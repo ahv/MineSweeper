@@ -50,13 +50,13 @@ public enum GridState { // TODO: Iffy
         }
     }
 
-    static final Color blue = new Color(0, 0, 220);
-    static final Color darkblue = new Color(0, 0, 120);
-    static final Color green = new Color(0, 120, 0);
-    static final Color red = new Color(220, 0, 0);
-    static final Color darkred = new Color(120, 0, 0);
-    static final Color teal = new Color(0, 220, 220);
-    static final Color purple = new Color(120, 0, 120);
+    static final Color BLUE = new Color(0, 0, 220);
+    static final Color DARKBLUE = new Color(0, 0, 120);
+    static final Color GREEN = new Color(0, 120, 0);
+    static final Color RED = new Color(220, 0, 0);
+    static final Color DARKRED = new Color(120, 0, 0);
+    static final Color TEAL = new Color(0, 220, 220);
+    static final Color PURPLE = new Color(120, 0, 120);
 
     /**
      * Convenience for user interfaces, matches states with colors.
@@ -67,19 +67,19 @@ public enum GridState { // TODO: Iffy
     public static Color stateToColor(GridState state) {
         switch (state) {
             case ONE:
-                return blue;
+                return BLUE;
             case TWO:
-                return green;
+                return GREEN;
             case THREE:
-                return red;
+                return RED;
             case FOUR:
-                return darkblue;
+                return DARKBLUE;
             case FIVE:
-                return darkred;
+                return DARKRED;
             case SIX:
-                return teal;
+                return TEAL;
             case SEVEN:
-                return purple;
+                return PURPLE;
             case NONE:
             case UNREVEALED:
             case EIGHT:

@@ -1,13 +1,13 @@
 package asd.fgh.minesweeper.logic.data;
 
-// Simple enough data class that it doesn't need tests?
 import java.util.ArrayList;
 
 /**
- * Used internally in Board class. Handles recursive grid opening in conjunction
- * with Board class (holds a reference to the board this grid belongs to - and
- * when opening grids, handles recursive opening by asking the board class about
- * this grid's neighbours).
+ * Used internally in Board class to represent game state, but also provides a
+ * public method (getState) to be used in an UI to update its visual state.
+ * Handles recursive grid opening in conjunction with Board class (holds a
+ * reference to the board this grid belongs to - and when opening grids, handles
+ * recursive opening by asking the board class about this grid's neighbours).
  *
  * @author ahv
  */
@@ -44,6 +44,7 @@ public class Grid {
     /**
      * Useful in an user interface, tells what information the player should be
      * currently seeing about the grid.
+     *
      * @return GridState; what the grid currently "looks" like.
      */
     public GridState getState() {

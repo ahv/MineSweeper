@@ -18,6 +18,7 @@ public class Game {
     private final Board board;
     private final GameSettings settings;
     private final StopWatch time;
+    // TODO: Some default text ui that gets set at construction to ensure no crash when ui not set with setUserInterface.
     private UserInterface ui;
 
     /**

@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Singleton class to record high scores.
+ * Singleton class to record high scores. Has persistence.
  *
  * @author ahv
  */
@@ -99,8 +99,9 @@ public class HighScores implements Serializable {
     }
 
     /**
-     * Inserts a high score to the high score boards, checks if eligible
-     * internally.
+     * Inserts a high score to the high score boards after checking if eligible.
+     * Saves the score to disk after each new entry.
+     *
      *
      * @param score Score object from a finished game.
      */
@@ -134,6 +135,13 @@ public class HighScores implements Serializable {
         save();
     }
 
+    /**
+     * Gets a score list matching a difficulty, useful in the UI when showing
+     * scoreboards.
+     *
+     * @param difficulty Difficulty to get scores for.
+     * @return List of scores matching the parameter difficulty.
+     */
     public static ArrayList<Score> getScoresFor(Difficulty difficulty) {
         switch (difficulty) {
             case BEGINNER:
