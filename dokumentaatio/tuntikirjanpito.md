@@ -8,4 +8,4 @@ Päivä | Tunnit | Kuvaus
 8.1.2017 | 16h | Karmeeta koodia, mutta demokunto. Palautuksen kriteerit. Koodikatselmukset.
 9.1.2017 | 2h | Game, Board ja Grid luokkien uudelleensuunnittelu, käyttöliittymään vähän väriä.
 11.1.2017 | 3h | Panikointia.
-... | ... | ...
+15.1.2017 | 4h | Viimehetken highscore persistenssi, lopputaputtelu.
