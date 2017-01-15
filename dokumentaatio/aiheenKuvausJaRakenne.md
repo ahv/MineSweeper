@@ -36,7 +36,7 @@ Game luokka tunnistaa kun peli päättyy ja tässä tapauksessa kutsuu käyttöl
 
 **Sekvenssikaaviot:**
 
-(HUOM! Eivät vastaa todellisuutta tällä hetkellä, koodin rakenne muutettu äskettäin huomattavasti... uudet sekvenssikaaviot tulossa)
+(HUOM! Eivät vastaa todellisuutta tällä hetkellä, koodin rakennetta refaktoroitu äskettäin huomattavasti puhtaampaan muotoon... uudet sekvenssikaaviot tulossa pian™)
 
 ![Sekvenssikaavio1](https://github.com/ahv/MineSweeper/blob/master/dokumentaatio/SequenceDiagram1.png)
 
