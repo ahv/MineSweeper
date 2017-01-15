@@ -69,4 +69,9 @@ public class Main {
         startFrame.setVisible(true);
     }
 
+    void showNewHighScoreScreen(Score score, GameSettings previousSettings) {
+        gameFrame.setEnabled(false);
+        new NameEntryFrame(this, score, previousSettings);
+    }
+
 }

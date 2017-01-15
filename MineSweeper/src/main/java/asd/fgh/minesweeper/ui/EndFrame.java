@@ -1,7 +1,9 @@
 package asd.fgh.minesweeper.ui;
 
 import asd.fgh.minesweeper.logic.Difficulty;
+import static asd.fgh.minesweeper.logic.Difficulty.BEGINNER;
 import asd.fgh.minesweeper.logic.GameSettings;
+import asd.fgh.minesweeper.persistence.HighScores;
 import asd.fgh.minesweeper.persistence.Score;
 import java.awt.Button;
 import java.awt.FlowLayout;
@@ -26,13 +28,29 @@ public class EndFrame extends Frame {
             }
         });
         Difficulty difc = score.getDifficulty();
-        setTitle((won ? "WON - ": "LOST - ") + (difc != null ? difc : "CUSTOM") + " - " + score.getTime() + " seconds");
+        setTitle((won ? "WON - " : "LOST - ") + (difc != null ? difc : "CUSTOM") + " - " + score.getTime() + " seconds");
         this.main = main;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         add(new Label("Highscores", Label.CENTER));
+        // TODO: Terrible copypaste shit here
         add(new Label("Beginner:"));
+        int i = 1;
+        for (Score s : HighScores.getScoresFor(Difficulty.BEGINNER)) {
+            add(new Label(i + ". " + s.getName() + " -- " + s.getTime() + " seconds"));
+            i++;
+        }
         add(new Label("Intermediate:"));
+        i = 1;
+        for (Score s : HighScores.getScoresFor(Difficulty.INTERMEDIATE)) {
+            add(new Label(s.getName() + " " + s.getTime() + " seconds"));
+            i++;
+        }
         add(new Label("Advanced:"));
+        i = 1;
+        for (Score s : HighScores.getScoresFor(Difficulty.ADVANCED)) {
+            add(new Label(s.getName() + " " + s.getTime() + " seconds"));
+            i++;
+        }
         //TODO: scores
 
         Panel buttonPanel = new Panel(new FlowLayout());

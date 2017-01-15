@@ -8,7 +8,7 @@ import java.io.Serializable;
  *
  * @author ahv
  */
-public class Score implements Serializable {
+public class Score implements Serializable, Comparable<Score> {
 
     private final Difficulty difficulty;
     private final int time;
@@ -53,9 +53,14 @@ public class Score implements Serializable {
      * @param name Name to associate with the score.
      */
     public void setName(String name) {
-        if (name == null) {
+        if (name != null) {
             // TODO: Validate
             this.name = name;
         }
+    }
+    
+    @Override
+    public int compareTo(Score t) {
+        return this.time < t.time ? -1 : 1;
     }
 }

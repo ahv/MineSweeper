@@ -5,6 +5,7 @@ import asd.fgh.minesweeper.logic.Game;
 import asd.fgh.minesweeper.logic.GameSettings;
 import asd.fgh.minesweeper.logic.UserInterface;
 import asd.fgh.minesweeper.logic.data.Grid;
+import asd.fgh.minesweeper.persistence.HighScores;
 import asd.fgh.minesweeper.persistence.Score;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -31,7 +32,7 @@ public class GameFrame extends Frame implements UserInterface {
     private final Label timeLabel;
     private final Label mineLabel;
     private final Main main;
-    
+
     public GameFrame(Main main, Game game) throws HeadlessException {
         addWindowListener(new WindowAdapter() {
             @Override
@@ -75,13 +76,12 @@ public class GameFrame extends Frame implements UserInterface {
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);
-        
-    }
 
+    }
 
     @Override
     public void updateGridView(ArrayList<Grid> changedGrids) {
-        for (Grid g : changedGrids){
+        for (Grid g : changedGrids) {
             grid[g.getX()][g.getY()].setVisualState(g.getState());
         }
         validate();
@@ -92,9 +92,13 @@ public class GameFrame extends Frame implements UserInterface {
     public void updateElapsedTime(int elapsedTime) {
         timeLabel.setText("Time: " + elapsedTime);
     }
-    
+
     @Override
     public void handleEndedGame(Score score, GameSettings previousSettings, boolean won) {
-        main.showEndScreen(score, previousSettings, won);
+        if (won && HighScores.isEligible(score)) {
+            main.showNewHighScoreScreen(score, previousSettings);
+        } else {
+            main.showEndScreen(score, previousSettings, won);
+        }
     }
 }
