@@ -16,7 +16,7 @@ Pelaaja.
   - Voidaan myös määrittää ruudukon koko ja miinojen määrä itse (arvot validoidaan)
 - Ruudun avaus
 - Ruudun merkkaus
-- Huippupisteiden katselu
+- Viereisten ruutujen avaus
 
 **Rakennekuvaus:**
 Game luokka pelin kannalta keskeisin - edustaa yhtä miinaharavakierrosta (siis yhtä lautaa). Voidaan luoda kahdenlaisia pelejä: mukautettuja (omilla asetuksilla) tai jokin kolmesta esimääritellystä vaikeusasteesta. Mukautettujen asetusten validointi ja esimääritellyt asetukset löytyy GameSettings oliosta, joka luodaan Game-luokan konstruktorissa sisäisesti. GameSettingsin voi kuitenkin getata Game instanssista, koska siitä saa hyödyllistä tietoa käyttöliittymää varten (kentän leveys, korkeus, miinojen määrä). Game-instanssiin täytyy ennen pelaamisen aloittamista setUserInterfacella liittää jokin luokka joka toteuttaa UserInterface-rajapinnan.
